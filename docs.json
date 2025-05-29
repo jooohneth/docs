@@ -1,9 +1,14 @@
 {
-  "theme": "maple",
   "$schema": "https://mintlify.com/docs.json",
-  "name": "Mint Starter Kit",
+  "theme": "palm",
+  "name": "Mantle Network",
   "colors": {
-    "primary": "#FEC9F9"
+    "primary": "#15DDB1",
+    "light": "#15DDB1",
+    "dark": "#15DDB1"
+  },
+  "contextual": {
+    "options": ["copy", "view", "chatgpt", "claude"]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -52,11 +57,7 @@
             "groups": [
               {
                 "group": "First",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "development"
-                ]
+                "pages": ["index", "quickstart", "development"]
               },
               {
                 "group": "Essentials",
@@ -76,9 +77,7 @@
             "groups": [
               {
                 "group": "API Documentation",
-                "pages": [
-                  "api-reference/introduction"
-                ]
+                "pages": ["api-reference/introduction"]
               },
               {
                 "group": "Endpoint Examples",
@@ -100,11 +99,7 @@
             "groups": [
               {
                 "group": "Primero",
-                "pages": [
-                  "es/index",
-                  "es/quickstart",
-                  "es/development"
-                ]
+                "pages": ["es/index", "es/quickstart", "es/development"]
               },
               {
                 "group": "Esenciales",
@@ -124,9 +119,7 @@
             "groups": [
               {
                 "group": "Documentación de API",
-                "pages": [
-                  "es/api-reference/introduction"
-                ]
+                "pages": ["es/api-reference/introduction"]
               },
               {
                 "group": "Ejemplos de Endpoints",
