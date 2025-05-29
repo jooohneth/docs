@@ -3,9 +3,7 @@
   "theme": "maple",
   "name": "Mint Starter Kit",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#FEC9F9"
   },
   "favicon": "/favicon.svg",
   "navigation": {
@@ -14,12 +12,8 @@
         "tab": "Guides",
         "groups": [
           {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "development"
-            ]
+            "group": "First",
+            "pages": ["index", "quickstart", "development"]
           },
           {
             "group": "Essentials",
@@ -39,9 +33,7 @@
         "groups": [
           {
             "group": "API Documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
+            "pages": ["api-reference/introduction"]
           },
           {
             "group": "Endpoint Examples",
