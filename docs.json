@@ -48,7 +48,11 @@
             "groups": [
               {
                 "group": "First",
-                "pages": ["index", "quickstart", "development"]
+                "pages": [
+                  "index",
+                  "quickstart",
+                  "development"
+                ]
               },
               {
                 "group": "Introduction",
@@ -92,7 +96,11 @@
             "groups": [
               {
                 "group": "First",
-                "pages": ["index", "quickstart", "development"]
+                "pages": [
+                  "index",
+                  "quickstart",
+                  "development"
+                ]
               },
               {
                 "group": "Essentials",
@@ -112,7 +120,11 @@
             "groups": [
               {
                 "group": "First",
-                "pages": ["index", "quickstart", "development"]
+                "pages": [
+                  "index",
+                  "quickstart",
+                  "development"
+                ]
               },
               {
                 "group": "Essentials",
@@ -132,7 +144,9 @@
             "groups": [
               {
                 "group": "API Documentation",
-                "pages": ["api-reference/introduction"]
+                "pages": [
+                  "api-reference/introduction"
+                ]
               },
               {
                 "group": "Endpoint Examples",
@@ -171,7 +185,31 @@
         "language": "es",
         "tabs": [
           {
-            "tab": "Guías",
+            "tab": "Introducción",
+            "groups": [
+              {
+                "group": "Primero",
+                "pages": [
+                  "es/index",
+                  "es/quickstart",
+                  "es/development"
+                ]
+              },
+              {
+                "group": "Introducción",
+                "pages": [
+                  "es/introduction/markdown",
+                  "es/introduction/code",
+                  "es/introduction/images",
+                  "es/introduction/settings",
+                  "es/introduction/navigation",
+                  "es/introduction/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Arquitectura del Sistema",
             "groups": [
               {
                 "group": "Primero",
@@ -195,10 +233,78 @@
             ]
           },
           {
-            "tab": "Referencia de API",
+            "tab": "Para Operadores de Nodos",
             "groups": [
               {
-                "group": "Documentación de API",
+                "group": "Primero",
+                "pages": [
+                  "es/index",
+                  "es/quickstart",
+                  "es/development"
+                ]
+              },
+              {
+                "group": "Esenciales",
+                "pages": [
+                  "es/essentials/markdown",
+                  "es/essentials/code",
+                  "es/essentials/images",
+                  "es/essentials/settings",
+                  "es/essentials/navigation",
+                  "es/essentials/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Para Desarrolladores",
+            "groups": [
+              {
+                "group": "Primero",
+                "pages": [
+                  "es/index",
+                  "es/quickstart",
+                  "es/development"
+                ]
+              },
+              {
+                "group": "Esenciales",
+                "pages": [
+                  "es/essentials/markdown",
+                  "es/essentials/code",
+                  "es/essentials/images",
+                  "es/essentials/settings",
+                  "es/essentials/navigation",
+                  "es/essentials/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Para Usuarios",
+            "groups": [
+              {
+                "group": "Documentación de la API",
+                "pages": [
+                  "es/api-reference/introduction"
+                ]
+              },
+              {
+                "group": "Ejemplos de Endpoints",
+                "pages": [
+                  "es/api-reference/endpoint/get",
+                  "es/api-reference/endpoint/create",
+                  "es/api-reference/endpoint/delete",
+                  "es/api-reference/endpoint/webhook"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Más",
+            "groups": [
+              {
+                "group": "Documentación de la API",
                 "pages": [
                   "es/api-reference/introduction"
                 ]
