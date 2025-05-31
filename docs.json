@@ -11,37 +11,31 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "mETH Protocol",
+        "href": "https://docs.mantle.xyz/meth"
+      },
+      {
+        "label": "Governance",
+        "href": "https://docs.mantle.xyz/governance"
       }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
+    ]
   },
   "navigation": {
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "icon": "book-open-cover",
-          "href": "https://mintlify.com/docs"
+          "anchor": "Faucet",
+          "icon": "faucet",
+          "href": "https://mnt-faucet.xyz"
         },
         {
-          "anchor": "Community",
-          "icon": "slack",
-          "href": "https://mintlify.com/community"
-        },
-        {
-          "anchor": "Blog",
-          "icon": "newspaper",
-          "href": "https://mintlify.com/blog"
+          "anchor": "Cookathon",
+          "icon": "user-chef",
+          "href": "https://cookathon.dev"
         }
       ]
     },
@@ -50,7 +44,27 @@
         "language": "en",
         "tabs": [
           {
-            "tab": "Guides",
+            "tab": "Introduction",
+            "groups": [
+              {
+                "group": "First",
+                "pages": ["index", "quickstart", "development"]
+              },
+              {
+                "group": "Introduction",
+                "pages": [
+                  "introduction/markdown",
+                  "introduction/code",
+                  "introduction/images",
+                  "introduction/settings",
+                  "introduction/navigation",
+                  "introduction/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "System Architecture",
             "groups": [
               {
                 "group": "First",
@@ -74,7 +88,65 @@
             ]
           },
           {
-            "tab": "API Reference",
+            "tab": "For Node Operatros",
+            "groups": [
+              {
+                "group": "First",
+                "pages": ["index", "quickstart", "development"]
+              },
+              {
+                "group": "Essentials",
+                "pages": [
+                  "essentials/markdown",
+                  "essentials/code",
+                  "essentials/images",
+                  "essentials/settings",
+                  "essentials/navigation",
+                  "essentials/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "For Developers",
+            "groups": [
+              {
+                "group": "First",
+                "pages": ["index", "quickstart", "development"]
+              },
+              {
+                "group": "Essentials",
+                "pages": [
+                  "essentials/markdown",
+                  "essentials/code",
+                  "essentials/images",
+                  "essentials/settings",
+                  "essentials/navigation",
+                  "essentials/reusable-snippets"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "For Users",
+            "groups": [
+              {
+                "group": "API Documentation",
+                "pages": ["api-reference/introduction"]
+              },
+              {
+                "group": "Endpoint Examples",
+                "pages": [
+                  "api-reference/endpoint/get",
+                  "api-reference/endpoint/create",
+                  "api-reference/endpoint/delete",
+                  "api-reference/endpoint/webhook"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "More",
             "groups": [
               {
                 "group": "API Documentation",
@@ -148,9 +220,9 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/0xMantleDevs",
+      "github": "https://github.com/mantlenetworkio",
+      "telegram": "https://t.me/mantledevs"
     }
   },
   "contextual": {
