@@ -1,14 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
   "theme": "palm",
+  "$schema": "https://mintlify.com/docs.json",
   "name": "Mantle Network",
   "colors": {
     "primary": "#15DDB1",
     "light": "#15DDB1",
     "dark": "#15DDB1"
-  },
-  "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
   },
   "logo": {
     "light": "/logo/light.svg",
@@ -57,7 +54,11 @@
             "groups": [
               {
                 "group": "First",
-                "pages": ["index", "quickstart", "development"]
+                "pages": [
+                  "index",
+                  "quickstart",
+                  "development"
+                ]
               },
               {
                 "group": "Essentials",
@@ -77,7 +78,9 @@
             "groups": [
               {
                 "group": "API Documentation",
-                "pages": ["api-reference/introduction"]
+                "pages": [
+                  "api-reference/introduction"
+                ]
               },
               {
                 "group": "Endpoint Examples",
@@ -93,13 +96,18 @@
         ]
       },
       {
+        "language": "es",
         "tabs": [
           {
             "tab": "Guías",
             "groups": [
               {
                 "group": "Primero",
-                "pages": ["es/index", "es/quickstart", "es/development"]
+                "pages": [
+                  "es/index",
+                  "es/quickstart",
+                  "es/development"
+                ]
               },
               {
                 "group": "Esenciales",
@@ -119,7 +127,9 @@
             "groups": [
               {
                 "group": "Documentación de API",
-                "pages": ["es/api-reference/introduction"]
+                "pages": [
+                  "es/api-reference/introduction"
+                ]
               },
               {
                 "group": "Ejemplos de Endpoints",
@@ -132,8 +142,7 @@
               }
             ]
           }
-        ],
-        "language": "es"
+        ]
       }
     ]
   },
@@ -143,5 +152,13 @@
       "github": "https://github.com/mintlify",
       "linkedin": "https://linkedin.com/company/mintlify"
     }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   }
 }
