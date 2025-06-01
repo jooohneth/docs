@@ -1,17 +1,20 @@
 {
-  "theme": "palm",
+  "theme": "maple",
   "$schema": "https://mintlify.com/docs.json",
   "name": "Mantle Network",
   "colors": {
-    "primary": "#15DDB1",
-    "light": "#15DDB1",
-    "dark": "#15DDB1"
+    "primary": "#008F6A",
+    "dark": "#008F6A",
+    "light": "#008F6A"
   },
   "logo": {
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
   "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
   "navbar": {
     "links": [
       {
@@ -29,152 +32,138 @@
       "anchors": [
         {
           "anchor": "Faucet",
-          "icon": "faucet",
+          "icon": "coins",
           "href": "https://mnt-faucet.xyz"
         },
         {
           "anchor": "Cookathon",
-          "icon": "user-chef",
+          "icon": "binary",
           "href": "https://cookathon.dev"
         }
       ]
     },
-    "languages": [
+    "dropdowns": [
       {
-        "language": "en",
-        "tabs": [
+        "dropdown": "Mantle Network",
+        "icon": "book-open",
+        "languages": [
           {
-            "tab": "Introduction",
-            "groups": [
+            "language": "en",
+            "tabs": [
               {
-                "group": "First",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "development"
+                "tab": "Introduction",
+                "groups": [
+                  {
+                    "group": "First",
+                    "pages": ["index", "quickstart", "development"]
+                  },
+                  {
+                    "group": "Introduction",
+                    "pages": [
+                      "introduction/markdown",
+                      "introduction/code",
+                      "introduction/images",
+                      "introduction/settings",
+                      "introduction/navigation",
+                      "introduction/reusable-snippets"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Introduction",
-                "pages": [
-                  "introduction/markdown",
-                  "introduction/code",
-                  "introduction/images",
-                  "introduction/settings",
-                  "introduction/navigation",
-                  "introduction/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "System Architecture",
-            "groups": [
-              {
-                "group": "First",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "development"
+                "tab": "System Architecture",
+                "groups": [
+                  {
+                    "group": "First",
+                    "pages": ["index", "quickstart", "development"]
+                  },
+                  {
+                    "group": "System Architecture",
+                    "pages": [
+                      "essentials/markdown",
+                      "essentials/code",
+                      "essentials/images",
+                      "essentials/settings",
+                      "essentials/navigation",
+                      "essentials/reusable-snippets"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Essentials",
-                "pages": [
-                  "essentials/markdown",
-                  "essentials/code",
-                  "essentials/images",
-                  "essentials/settings",
-                  "essentials/navigation",
-                  "essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "For Node Operatros",
-            "groups": [
-              {
-                "group": "First",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "development"
+                "tab": "For Node Operatros",
+                "groups": [
+                  {
+                    "group": "First",
+                    "pages": ["index", "quickstart", "development"]
+                  },
+                  {
+                    "group": "Essentials",
+                    "pages": [
+                      "essentials/markdown",
+                      "essentials/code",
+                      "essentials/images",
+                      "essentials/settings",
+                      "essentials/navigation",
+                      "essentials/reusable-snippets"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Essentials",
-                "pages": [
-                  "essentials/markdown",
-                  "essentials/code",
-                  "essentials/images",
-                  "essentials/settings",
-                  "essentials/navigation",
-                  "essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "For Developers",
-            "groups": [
-              {
-                "group": "First",
-                "pages": [
-                  "index",
-                  "quickstart",
-                  "development"
+                "tab": "For Developers",
+                "groups": [
+                  {
+                    "group": "First",
+                    "pages": ["index", "quickstart", "development"]
+                  },
+                  {
+                    "group": "Essentials",
+                    "pages": [
+                      "essentials/markdown",
+                      "essentials/code",
+                      "essentials/images",
+                      "essentials/settings",
+                      "essentials/navigation",
+                      "essentials/reusable-snippets"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Essentials",
-                "pages": [
-                  "essentials/markdown",
-                  "essentials/code",
-                  "essentials/images",
-                  "essentials/settings",
-                  "essentials/navigation",
-                  "essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "For Users",
-            "groups": [
-              {
-                "group": "API Documentation",
-                "pages": [
-                  "api-reference/introduction"
+                "tab": "For Users",
+                "groups": [
+                  {
+                    "group": "API Documentation",
+                    "pages": ["api-reference/introduction"]
+                  },
+                  {
+                    "group": "Endpoint Examples",
+                    "pages": [
+                      "api-reference/endpoint/get",
+                      "api-reference/endpoint/create",
+                      "api-reference/endpoint/delete",
+                      "api-reference/endpoint/webhook"
+                    ]
+                  }
                 ]
               },
               {
-                "group": "Endpoint Examples",
-                "pages": [
-                  "api-reference/endpoint/get",
-                  "api-reference/endpoint/create",
-                  "api-reference/endpoint/delete",
-                  "api-reference/endpoint/webhook"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "More",
-            "groups": [
-              {
-                "group": "API Documentation",
-                "pages": [
-                  "api-reference/introduction"
-                ]
-              },
-              {
-                "group": "Endpoint Examples",
-                "pages": [
-                  "api-reference/endpoint/get",
-                  "api-reference/endpoint/create",
-                  "api-reference/endpoint/delete",
-                  "api-reference/endpoint/webhook"
+                "tab": "More",
+                "groups": [
+                  {
+                    "group": "API Documentation",
+                    "pages": ["api-reference/introduction"]
+                  },
+                  {
+                    "group": "Endpoint Examples",
+                    "pages": [
+                      "api-reference/endpoint/get",
+                      "api-reference/endpoint/create",
+                      "api-reference/endpoint/delete",
+                      "api-reference/endpoint/webhook"
+                    ]
+                  }
                 ]
               }
             ]
@@ -182,148 +171,13 @@
         ]
       },
       {
-        "language": "es",
-        "tabs": [
-          {
-            "tab": "Introducción",
-            "groups": [
-              {
-                "group": "Primero",
-                "pages": [
-                  "es/index",
-                  "es/quickstart",
-                  "es/development"
-                ]
-              },
-              {
-                "group": "Introducción",
-                "pages": [
-                  "es/introduction/markdown",
-                  "es/introduction/code",
-                  "es/introduction/images",
-                  "es/introduction/settings",
-                  "es/introduction/navigation",
-                  "es/introduction/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Arquitectura del Sistema",
-            "groups": [
-              {
-                "group": "Primero",
-                "pages": [
-                  "es/index",
-                  "es/quickstart",
-                  "es/development"
-                ]
-              },
-              {
-                "group": "Esenciales",
-                "pages": [
-                  "es/essentials/markdown",
-                  "es/essentials/code",
-                  "es/essentials/images",
-                  "es/essentials/settings",
-                  "es/essentials/navigation",
-                  "es/essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Para Operadores de Nodos",
-            "groups": [
-              {
-                "group": "Primero",
-                "pages": [
-                  "es/index",
-                  "es/quickstart",
-                  "es/development"
-                ]
-              },
-              {
-                "group": "Esenciales",
-                "pages": [
-                  "es/essentials/markdown",
-                  "es/essentials/code",
-                  "es/essentials/images",
-                  "es/essentials/settings",
-                  "es/essentials/navigation",
-                  "es/essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Para Desarrolladores",
-            "groups": [
-              {
-                "group": "Primero",
-                "pages": [
-                  "es/index",
-                  "es/quickstart",
-                  "es/development"
-                ]
-              },
-              {
-                "group": "Esenciales",
-                "pages": [
-                  "es/essentials/markdown",
-                  "es/essentials/code",
-                  "es/essentials/images",
-                  "es/essentials/settings",
-                  "es/essentials/navigation",
-                  "es/essentials/reusable-snippets"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Para Usuarios",
-            "groups": [
-              {
-                "group": "Documentación de la API",
-                "pages": [
-                  "es/api-reference/introduction"
-                ]
-              },
-              {
-                "group": "Ejemplos de Endpoints",
-                "pages": [
-                  "es/api-reference/endpoint/get",
-                  "es/api-reference/endpoint/create",
-                  "es/api-reference/endpoint/delete",
-                  "es/api-reference/endpoint/webhook"
-                ]
-              }
-            ]
-          },
-          {
-            "tab": "Más",
-            "groups": [
-              {
-                "group": "Documentación de la API",
-                "pages": [
-                  "es/api-reference/introduction"
-                ]
-              },
-              {
-                "group": "Ejemplos de Endpoints",
-                "pages": [
-                  "es/api-reference/endpoint/get",
-                  "es/api-reference/endpoint/create",
-                  "es/api-reference/endpoint/delete",
-                  "es/api-reference/endpoint/webhook"
-                ]
-              }
-            ]
-          }
-        ]
+        "dropdown": "mETH Protocol",
+        "icon": "book-open",
+        "pages": ["meth"]
       }
     ]
   },
+
   "footer": {
     "socials": {
       "x": "https://x.com/0xMantleDevs",
@@ -332,11 +186,6 @@
     }
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude"]
   }
 }
