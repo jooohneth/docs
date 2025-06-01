@@ -1,13 +1,13 @@
 ---
-- title: Configuración Global
+- title: Configuraciones Globales
 - description: Mintlify te da control completo sobre el aspecto y la sensación de
     tu documentación usando el archivo docs.json
 - icon: gear
 ---
 
-Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración principal. Aprende más sobre las[properties](#properties)a continuación.
+Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración básica. Aprende más sobre las[propiedades](#properties)a continuación.
 
-## Properties
+## Propiedades
 
 <ResponseField name="name" type="string" required>
   Nombre de tu proyecto. Usado para el título global.
@@ -18,7 +18,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 <ResponseField name="navigation" type="Navigation[]" required>
   Un array de grupos con todas las páginas dentro de ese grupo
 
-  <Expandable title="Navigation">
+  <Expandable title="Navegación">
     <ResponseField name="group" type="string">
       El nombre del grupo.
 
@@ -34,7 +34,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 </ResponseField>
 
 <ResponseField name="logo" type="string or object">
-  Ruta a la imagen del logo u objeto con ruta a las imágenes del logo en modo "light" y "dark"
+  Ruta a la imagen del logo u objeto con ruta a las imágenes del logo en modo "claro" y "oscuro"
 
   <Expandable title="Logo">
     <ResponseField name="light" type="string">
@@ -58,7 +58,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 <ResponseField name="colors" type="Colors">
   Códigos de color hexadecimal para tu tema global
 
-  <Expandable title="Colors">
+  <Expandable title="Colores">
     <ResponseField name="primary" type="string" required>
       El color primario. Usado más a menudo para contenido resaltado, encabezados de sección, acentos, en modo claro
     </ResponseField>
@@ -74,7 +74,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
     <ResponseField name="background" type="object">
       El color del fondo tanto en modo claro como oscuro
 
-      <Expandable title="Object">
+      <Expandable title="Objeto">
         <ResponseField name="light" type="string" required>
           El código de color hexadecimal del fondo en modo claro
         </ResponseField>
@@ -104,7 +104,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 </ResponseField>
 
 <ResponseField name="topbarCtaButton" type="Call to Action">
-  <Expandable title="Topbar Call to Action">
+  <Expandable title="Llamada a la acción de la barra superior">
     <ResponseField name="type" type={'"link" or "github"'} default="link">
       Link muestra un botón. GitHub muestra la información del repositorio en la url proporcionada, incluyendo el número de estrellas de GitHub.
     </ResponseField>
@@ -112,7 +112,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
     <ResponseField name="url" type="string">
       Si`link`: A qué enlaza el botón.
 
-      Si`github`: Enlace al repositorio para cargar la información de GitHub.
+      Si`github`: Enlace al repositorio del que cargar la información de GitHub.
     </ResponseField>
 
     <ResponseField name="name" type="string">
@@ -166,7 +166,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 <ResponseField name="topAnchor" type="Object">
   Anula las configuraciones predeterminadas para el anclaje de nivel superior.
 
-  <Expandable title="Object">
+  <Expandable title="Objeto">
     <ResponseField name="name" default="Documentation" type="string">
       El nombre del anclaje de nivel superior
     </ResponseField>
@@ -230,7 +230,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
         <ResponseField name="mode" default="show" type="&#x22;show&#x22; | &#x22;simple&#x22; | &#x22;hide&#x22;">
           Si el playground se muestra, está oculto o solo muestra el endpoint sin interactividad adicional del usuario`simple`
 
-          Aprende más en las[playground guides](/api-playground/demo)
+          Aprende más en las[guías del playground](/api-playground/demo)
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -238,7 +238,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
     <ResponseField name="maintainOrder" type="boolean">
       Habilitar esta bandera asegura que el orden de las claves en las páginas de OpenAPI coincida con el orden de las claves definido en el archivo OpenAPI.
 
-      <Warning>Este comportamiento pronto se habilitará por defecto, momento en el que este campo quedará obsoleto.</Warning>
+      <Warning>Este comportamiento pronto estará habilitado por defecto, momento en el que este campo quedará obsoleto.</Warning>
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -283,7 +283,7 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
     </ResponseField>
 
     <ResponseField name="property" type="string">
-      La URL a la plataforma social.
+      La URL de la plataforma social.
 
       Example: `https://x.com/mintlify`
     </ResponseField>
@@ -335,5 +335,5 @@ Cada sitio de Mintlify necesita un`docs.json`archivo con la configuración princ
 </ResponseField>
 
 <ResponseField name="backgroundImage" type="string">
-  Una imagen de fondo para ser mostrada detrás de cada página. Ver ejemplo con[Infisical](https://infisical.com/docs)y[FRPC](https://frpc.io).
+  Una imagen de fondo para mostrar detrás de cada página. Ver ejemplo con[Infisical](https://infisical.com/docs)y[FRPC](https://frpc.io).
 </ResponseField>

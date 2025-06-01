@@ -11,15 +11,15 @@ import SnippetIntro from '/snippets/snippet-intro.mdx';
 
 ## Creando un fragmento personalizado
 
-**Pre-condición**: Debes crear tu archivo de fragmento en el directorio`snippets`.
+**Precondición**: Debes crear tu archivo de fragmento en el directorio `snippets`.
 
 <Note>
-  Cualquier página en el directorio`snippets`será tratada como un fragmento y no se renderizará como una página independiente. Si quieres crear una página independiente a partir del fragmento, importa el fragmento en otro archivo y llámalo como un componente.
+  Cualquier página en el directorio `snippets` será tratada como un fragmento y no se renderizará como una página independiente. Si deseas crear una página independiente a partir del fragmento, importa el fragmento a otro archivo y llámalo como un componente.
 </Note>
 
 ### Exportación por defecto
 
-1. Añade contenido a tu archivo de fragmento que quieras reutilizar en múltiples ubicaciones. Opcionalmente, puedes añadir variables que se pueden rellenar a través de props cuando importas el fragmento.
+1. Añade contenido a tu archivo de fragmento que quieras reutilizar en múltiples ubicaciones. Opcionalmente, puedes añadir variables que se pueden rellenar a través de props cuando importes el fragmento.
 
 ```mdx snippets/my-snippet.mdx
 Hello world! This is my content I want to reuse across pages. My keyword of the
@@ -27,7 +27,7 @@ day is {word}.
 ```
 
 <Warning>
-  El contenido que quieres reutilizar debe estar dentro del directorio`snippets`para que la importación funcione.
+  El contenido que quieres reutilizar debe estar dentro del directorio `snippets` para que la importación funcione.
 </Warning>
 
 2. Importa el fragmento en tu archivo de destino.
@@ -84,7 +84,7 @@ export const MyComponent = ({ title }) => (
 ```
 
 <Warning>
-  MDX no se compila dentro del cuerpo de una función flecha. Mantente en la sintaxis HTML cuando puedas o usa una exportación por defecto si necesitas usar MDX.
+  MDX no se compila dentro del cuerpo de una función flecha. Utiliza la sintaxis HTML cuando puedas o usa una exportación por defecto si necesitas usar MDX.
 </Warning>
 
 2. Importa el fragmento en tu archivo de destino y pasa las props
