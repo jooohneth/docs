@@ -1,0 +1,41 @@
+---
+title: "Testnet v0.4.0"
+---
+
+This network update brings about the following changes:
+
+* Rebranding of the native \$BIT token to \$MNT
+* Adds fraud proof features
+* Enables delegation for fraud proof and TSS modules
+* Opens up the Mantle DA network for external parties
+
+For more details on how the aforementioned features were included to the codebase, follow the links below to navigate to the Mantle GitHub repo.
+
+#### GitHub Links
+
+* Full changelog: [https://github.com/mantlenetworkio/mantle/releases](https://github.com/mantlenetworkio/mantle/releases)
+* Relevant pull requests:
+  * Fraud proof features: [https://github.com/mantlenetworkio/mantle/pull/814](https://github.com/mantlenetworkio/mantle/pull/814)
+  * Delegation for fraud proof and TSS modules: [https://github.com/mantlenetworkio/mantle/pull/826](https://github.com/mantlenetworkio/mantle/pull/826)
+  * \$BIT -> \$MNT token rebranding: [https://github.com/mantlenetworkio/mantle/pull/942](https://github.com/mantlenetworkio/mantle/pull/942)
+  * Mantle DA integration: [https://github.com/mantlenetworkio/mantle/pull/896](https://github.com/mantlenetworkio/mantle/pull/896)
+
+## Instructions for Node Operators
+
+The testnet update is planned to go online at block height **11,000,000. **Node operators need to update their node software before that block height to avoid unexpected node behavior.
+
+You can update your node version to v0.4.0 using Docker. The image tags are as follows:
+
+* **For L2 nodes** - `l2geth:v0.4.0-1`
+* **For DTL service** - `dtl:v0.4.0`
+
+You can also find the updated Docker images here:
+
+<Card title="Docker" icon="docker" href="https://hub.docker.com/r/mantlenetworkio/"></Card>
+
+<Info>
+If your node continues to sync normally after the node version update, you're good to go! Please [get in touch with us](https://discord.com/invite/0xMantle) if you encounter any issues during the process.
+
+</Info>
+
+

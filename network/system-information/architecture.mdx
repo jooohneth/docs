@@ -1,0 +1,34 @@
+---
+title: "Architecture"
+---
+
+## Architecture Overviews [→](https://docs-v2.mantle.xyz/intro/system-components/architecture#architecture-overviews)
+
+<Frame caption="">
+  <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2F3885809119-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FQliZlRNwHhmzesDU1Ksq%252Fuploads%252F1o9uAiv2DISiwmBDsbM0%252Fimage.png%3Falt%3Dmedia%26token%3D96987e57-f25f-44e7-9d08-5a9c9bf2a627&width=768&dpr=4&quality=100&sign=bc1bfe96&sv=2" />
+</Frame>
+
+This diagram illustrates how different network modules and components interact through transaction execution in Mantle v2 Tectonic. It depicts the process of interacting with EigenDA-supported Mantle Data Availability (DA) to store Rollup data and eventually publish updated state data to the Ethereum L1.
+
+Let's review the transaction processing process to better understand the functioning of each module.
+
+1. Users send signed transactions through available RPC nodes.
+
+2. The sequencer receives transactions and packs them into blocks. op-batcher obtains data from the sequencer, performs encoding and compression, sends it to the DA module, and submits data validity information to the L1 contract.
+
+3. Similarly,[`op-proposer`](/network/system-information/off-chain-system/node-introduction#op-proposer) obtains the state root of packed blocks through the sequencer and sends it to the relevant contract [`L2OutputOracle`](https://sepolia.etherscan.io/address/0x7DC1E47F1a367B6750802077632787181e70Bf8C) on L1.
+
+4. Rollup transaction data is stored on Mantle DA. Verifiers can retrieve this data at any time and verify its validity, a process executed when issuing fraud-proof challenges.
+
+<Info>
+If you would like to learn more about on-chain and off-chain design in the Mantle Network, check out the [**on-chain system**](/network/system-information/on-chain-system) and [**off-chain system**](/network/system-information/off-chain-system) pages!
+
+</Info>
+
+## Transaction Pool in Mantle [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#transaction-pool-in-mantle)
+
+In Mantle v2 Tectonic, a transaction pool structure similar to Ethereum's mempool is introduced for the temporary storage of transactions until they are included in a block. The introduction of the transaction pool in L2 is aimed at improving transaction packing. With Mantle v2 Tectonic's support for [EIP-1559 transaction types](/network/more/glossary#eip-1559-transaction), users can control the transaction packing speed by manipulating the priority fee in transactions. The transaction pool is used to temporarily store those unpacked transactions.
+
+However, the introduction of the transaction pool also brings certain challenges, such as the impact of Miner Extractable Value (MEV). Therefore, in Mantle v2 Tectonic, the tx pool is designed to be private. If you want to submit a transaction, you need to configure [`op-geth`](/network/system-information/off-chain-system/node-introduction#op-geth) to send the transaction to the sequencer. The sequencer will then process transactions in the transaction pool in the order of their base fee and priority fee.
+
+

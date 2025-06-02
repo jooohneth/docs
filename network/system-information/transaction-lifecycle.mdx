@@ -1,0 +1,47 @@
+---
+title: "Transaction Lifecycle"
+---
+
+## L2 -> L1 Workflow [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#l2---l1-workflow)
+
+### The Initiation [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#1-the-initiation)
+
+Wallet users, dApps, or some scripts may wish to utilize a blockchain-based system to transfer funds or execute tasks.
+
+* For users, they have connected to Mantle network by adding the sequencer node's RPC endpoint to their wallet.
+
+* On the other hand, dApps have integrated the [Mantle SDK](https://sdk.mantle.xyz/index.html) and instantiated it to communicate with Mantle network. They are ready to send requests containing the recipient's address and the amount they want to transfer.
+
+As with any other service, this operation requires payment. It is not just for the transfer itself, but also for maintaining a permanent, immutable public record that anyone can verify. Their wallet or dApp must ensure there is a sufficient balance to execute this operation.
+
+* For wallets, things are simpler; as it is easier to calculate the required fee.
+
+* dApps need to do more detailed calculations; for more information, please refer to this [section](/network/system-information/fee-mechanism).
+
+They use the tools at hand to compose a request, sign it using their private keys, and send it to Mantle Network where a sequencer is ready to process it. This is where the transaction first enters Mantle. More details [here](/network/system-information/off-chain-system/node-introduction#sequencer).
+
+### The Handling [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#2-the-handling)
+
+The transaction triggers the standard state verification process, executed by the Ethereum Virtual Machine (EVM) software ([`op-geth`](/network/system-information/off-chain-system/node-introduction#op-geth)) running on these nodes. This is to ensure that the transaction is fundamentally valid, the necessary fees have been paid, and nothing exceptional has occurred. After completing the state transition, the [`op-proposer`](/network/system-information/off-chain-system/node-introduction#op-proposer) proposes a new state's Merkle root and submits it to the corresponding L1 contract.
+
+<Info>
+It's important to note that state submission doesn't need to be executed after every transaction, but can be chosen to be submitted after a tx-batch.
+
+</Info>
+
+The transaction updates the local state (ledger) and waits for further processing as part of a pending block. So far, this process is particularly fast. Many such pending blocks are combined to form batches, which are encoded and compressed by [`op-batcher`](/network/system-information/off-chain-system/node-introduction#op-batcher) and sent to Ethereum for final settlement. L2 achieves low transaction fees by spreading fixed costs across multiple transactions in a batch.
+
+<Info>
+For details on the encoding and compression process of op-batcher, please refer to this [spec](https://github.com/mantlenetworkio/mantle-v2/blob/develop/specs/derivation.md#batch-submission).
+
+</Info>
+
+### The Storage [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#3-the-storage)
+
+Unlike typical Rollups, Mantle Network aims for more efficient and cost-effective Data Availability (DA) guarantees. Therefore, it opts for EigenDA, developed based on a third-party DA component. `op-batcher` needs to submit all transaction data (not raw transactions) to EigenDA to ensure the integrity and effectiveness of the L2 network. DA nodes synchronize block data and ensure access to it at any given time in exchange for rewards for providing this service. For more detailed information, please see this section.
+
+EigenDA supports data storage and reverse derivation, ensuring data availability. In addition to data storage, state storage is also crucial.
+
+On Ethereum, there is a complete trust network ready to verify the updated state root stored in the contract. Once a block passes Ethereum's consensus mechanism, it is recorded on the secure chain. The state transition is considered valid once the uploaded state root passes the challenge period (typically 7 days).
+
+

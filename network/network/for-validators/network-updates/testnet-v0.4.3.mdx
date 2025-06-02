@@ -1,0 +1,38 @@
+---
+title: "Testnet v0.4.3"
+---
+
+This network update brings about the following changes:
+
+* Optimized layer-2 (L2) transaction fee, allowing users to customize transaction fees within a wider range to support Account Abstraction (AA)
+* Optimized rollup submission strategy to achieve lower gas fees in scenarios with higher TPS
+* Optimized gas oracle data update strategy to ensure that the L2 network has a more stable real-time adjustment ability for transaction fees.
+* Added Mantle audit report files
+
+For more details on how the aforementioned features were included in the codebase, follow the links below to navigate to the Mantle GitHub repo. **GitHub Links：**
+
+* Full changelog: [https://github.com/mantlenetworkio/mantle/releases](https://github.com/mantlenetworkio/mantle/releases)
+* Relevant pull requests:
+  * Optimized L2 transaction fee: [https://github.com/mantlenetworkio/mantle/pull/1144](https://github.com/mantlenetworkio/mantle/pull/1144)
+  * Optimized rollup submission strategy: [https://github.com/mantlenetworkio/mantle/pull/1301](https://github.com/mantlenetworkio/mantle/pull/1301)
+  * Optimized gas oracle data update strategy:
+    * [https://github.com/mantlenetworkio/mantle/pull/1345](https://github.com/mantlenetworkio/mantle/pull/1345,)
+    * [https://github.com/mantlenetworkio/mantle/pull/1346](https://github.com/mantlenetworkio/mantle/pull/1346)
+  * Mantle audit report files: [https://github.com/mantlenetworkio/mantle/pull/1333](https://github.com/mantlenetworkio/mantle/pull/1333)
+
+## Instructions for Node Operators
+
+Please follow the steps below to upgrade your node：
+
+1. Stop current docker service
+2. Change the image tag in the `docker-compose.yml`, Replace the current image from `mantlenetworkio/l2geth:v0.4.0-1` to [`mantlenetworkio/l2geth:v0.4.3`](https://hub.docker.com/r/mantlenetworkio/l2geth/tags)
+3. Start new docker service
+
+<Info>
+Please note that the following configuration needs to be modified to start a new node: [https://github.com/mantlenetworkio/networks/pull/31/files](https://github.com/mantlenetworkio/networks/pull/31/files)
+
+</Info>
+
+4. Check logs to see status
+
+

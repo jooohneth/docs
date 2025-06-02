@@ -1,0 +1,100 @@
+---
+title: "Overview"
+description: Your one-stop guide to understanding the different modules that make up Mantle Network
+---
+
+<Warning>
+Mantle v2 Tectonic has been released, please move to the new [documentation](https://docs-v2.mantle.xyz/)!
+
+</Warning>
+
+Mantle Network is a technology stack for scaling Ethereum, and we strive to be EVM-compatible while doing so. Being EVM-compatible means all the contracts and tools that work on Ethereum also work on Mantle Network with minimal modifications. Users can experiment with exciting web3 apps, and developers can deploy smart contracts in an efficient, low-fee environment.
+
+At its core, Mantle Network has been built with a modular architecture that combines an optimistic rollup protocol with an innovative data availability solution. This allows Mantle Network to inherit security from Ethereum AND offer cheaper and more accessible data availability.
+
+<Info>
+If you find any of these terms unfamiliar, we encourage you to visit [Optimistic Rollups](/network/network/introduction/concepts/optimistic-rollups) and the pages that follow where we go over blockchain, rollups, and Mantle's key innovations in a more approachable way.
+
+On the other hand, if these terms make you excited for the future of blockchain scaling we encourage you to keep reading!
+
+</Info>
+
+## Mantle Network vs. Non-Rollup Chains
+
+Ethereum rollups, including Mantle Network, leverage the Ethereum validator set and consensus protocol, which is widely regarded as more secure compared to other layer-1 (L1) validator sets. This grants Mantle Network several advantages, such as:
+
+* Canonical bridging without relying on third-party bridges
+* Censorship resistance
+* Fund recovery options even in the event of critical issues on layer-2 (L2)
+
+## Secured by Ethereum
+
+Mantle Network is an L2 scalability solution built on top of Ethereum. The validator nodes collect transactions from users and commit them to Ethereum in the form of a "compressed block". This compression saves users expensive gas fees and increases the total possible throughput for transactions.
+
+By building on top of Ethereum, Mantle Network inherits desirable features like-
+
+* **Secured by Ethereum:** L2 state transitions are verified by Ethereum validators, going through the same consensus and settlement process as L1 transactions.
+* **Common developer infrastructure:** Smart contract development frameworks like Truffle, Hardhat, Foundry, Remix, etc., languages like Solidity, Vyper, Yul, etc., and libraries like Web3.js and ethers.js, etc. can all be used on Mantle.
+
+At the same time, Mantle Network offers a superior user experience with multiple other benefits as compared to L1, such as-
+
+* **Significantly lower gas fees:** Users enjoy over 80% reduction in gas fees which are achieved through data compression and modular data availability.
+* **Reduced latency and improved throughput:** Users can customize transaction confirmation requirements, with the lowest security setting providing near real-time confirmation latencies (\~10 milliseconds versus Ethereum's \~12 seconds). Additionally, Mantle Network achieves a transaction throughput some 20 times greater than Ethereum (500 TPS versus Ethereum's \~25 TPS)
+
+## Modular Architecture
+
+Mantle Network takes a modular approach with chain design. While monolithic chains perform transaction execution, consensus, settlement, and storage at the same network layer, these processes are handled by separate modules on Mantle Network. In its initial Mainnet version, Mantle Network functions as a Smart Contract Rollup with modular data availability. Hence,
+
+* Mantle's execution layer provides an EVM-compatible environment for transaction execution where the sequencer produces blocks on L2 and sends state root data to L1
+* Consensus and settlement take place on L1 Ethereum
+* Data availability services are provided to network actors through Mantle DA powered by [EigenDA](https://eigenlayer.xyz) technology that stores callback data that would be published to L1 in traditional rollups
+
+## Sequencer Properties
+
+The centralized sequencer on Mantle Network produces L2 blocks by including transactions in them in the order they are received by the nodes. It also publishes updated state roots to L1.
+
+We include can additional sequencer module referred to as [Threshold Signature Scheme](/network/network/introduction/concepts/threshold-signature-scheme)(TSS). This module consists of a set of whitelisted node operators who sign blocks and contribute to multi-party signatures that help improve the correctness of off-chain transaction execution results. In the event that an *N of M* threshold is not met, the sequencer may re-sequence a batch of L2 blocks, or transition to a backup sequencer.
+
+<Info>
+The transition to a backup sequencer is controlled by the core DevOps team, with measures in place to minimize downtime.
+
+</Info>
+
+## Fraud Proofs
+
+Optimistic Rollups execute transactions that result in state transitions, and updated state data are published to L1 Ethereum assuming their validity and without providing any direct proofs for the same. Mantle Network sends updated state data to a State Commitment Chain (SCC) contract on L1, where network actors can challenge its validity within a challenge period (currently set to 7 days). If the state data goes unchallenged, it is considered valid and final and withdrawal requests that rely on this state data can be processed by other smart contracts.
+
+If a commitment gets challenged, a verifier interacts with the challenger to narrow down the invalidity to a single state transition, at which point its validity is established by executing it. In case of a successful challenge, the state transition is discarded and the contract accepts the valid version of the updated state submitted by the challenger.
+
+<Info>
+To learn more about the advantages of this mechanism, check out the [Fraud Proofs](/network/network/introduction/concepts/fraud-proofs) page talking about it in detail.
+
+</Info>
+
+## Data Availability
+
+Data availability (of L2 batch data) is a critical aspect of Ethereum rollups, such that L1 validators can verify the L2 state. DA is generally the most expensive component of rollups, as it requires Ethereum L1 block space. Common industry approaches to data availability include:
+
+* **On-Chain L1:** All data that is needed for proof construction is available on L1.
+* **Centralized DA Committees:** Data for proof construction is not available on L1. There exists a committee tasked with supplying the data. This approach presents significant cost savings to the rollup, at the risk that data becomes unavailable.
+* **Modular Data Availability\*\*:** Standalone DA modules, like Mantle DA powered by [EigenLayer's](https://www.eigenlayer.xyz/) EigenDA technology. Data availability is enabled via DA economic game theory involving rewards and stake slashing. Based on internal evaluations, this translates to a 30-70% cost savings compared to on-chain L1.
+
+*\*\* denotes approach of the initial Mantle Network Mainnet version*
+
+<Info>
+Check out the page on [Data Availability](/network/network/introduction/concepts/data-availability) to learn more about how modular Data Availability is implemented on Mantle Network.
+
+</Info>
+
+## Where do I get started?
+
+Mantle Network's L2 rollup infrastructure is being developed to meet the needs of the growing [**\$MNT **ecosystem](https://mantle.xyz).
+
+<Info>
+Get in touch with our growth team [**here**](https://airtable.com/shr9ATBlHZXCKDbPV) for support.
+
+</Info>
+
+You can find essential info on how to link your wallet to Mantle Network, acquiring testnet tokens, dev tutorials, and more in the [How-to Guides](/network/network/introduction/how-to-guides) section. If you're a developer, the [Developing on Mantle](/network/network/for-devs/developing-on-mantle) page is a great place to start.
+
+

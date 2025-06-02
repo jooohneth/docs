@@ -1,0 +1,70 @@
+---
+title: "Data Availability"
+description: Unlocking hyper-scaled data availability on a Layer 2 rollup
+---
+
+<Warning>
+Mantle v2 Tectonic has been released, please move to the new [documentation](https://docs-v2.mantle.xyz/)!
+
+</Warning>
+
+## What is Data Availability?
+
+By "Data Availability" (DA) we are referring to the ability for any node in the Mantle network to access the transaction history posted by the Sequencer. Access to block data for all network participants is a major scalability issue that must be addressed, especially in the case of blockchains that operate on a rollup architecture to eliminate the possibility of block data being withheld, maliciously or otherwise. So the challenge of maintaining a *trustless* L2 network is distilled into ensuring that transaction data remains available!
+
+<Info>
+It turns out that guaranteeing data availability is a challenge in its own right. To understand how this is handled, you can read more about the data availability problem and erasure coding [here](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding).
+
+</Info>
+
+## Trust Minimization
+
+One of the foundational pillars of blockchain design is *trustlessness*. When we say "trustless", we mean that a user on a blockchain should be able to accomplish their tasks *without placing unnecessary trust* in third-parties.
+
+This explains why blockchains use cryptography. Instead of relying on soft agreements and social contracts with other network participants (aka trust), blockchains use hard rules and code to enforce expected behavior. What this means practically is that blockchains are designed so that any user can verify whether a network participant has followed the rules.
+
+On a network like Ethereum, this means a certain reliance on **full nodes.** Full nodes will publicly store the entire history of blockchain data so that all other network participants can verify the state transition of the chain was correct.
+
+In the case of Mantle, transactions are submitted and executed on the L2 chain. This means that Mantle nodes need access to the L2 transaction data in order to verify the state transition. This verification is enabled by having the Sequencer **publish** the full transaction data and cryptographic evidence of the state transition (a Merkle Proof) on Ethereum.
+
+The reliability of Ethereum's trust network is derived from its widespread validator network running a solid consensus algorithm, adoption that ensures security, combined with the value of the relatively well-distributed \$ETH token.
+
+## EigenLayer
+
+[**EigenLayer**](https://www.eigenlayer.com/)**,** a re-staking protocol, leverages Ethereum's existing trust network for enabling **any** rollup-based L2 to guarantee data availability to its execution layer, while maintaining the same level of security as the Ethereum mainnet. This is achieved through a **re-staking** mechanism, where L1 validators can opt in to provide data availability services being subjected to additional performance conditions using their staked \$ETH as collateral.
+
+<Info>
+Think of it as an Ethereum middleware platform.
+
+</Info>
+
+Just as optimistic rollups use economic incentives to maintain system integrity, this mechanism also puts incentives in place for Ethereum validators to provide their services for additional yield opportunities. Read more on EigenLayer [here](https://ethresear.ch/t/an-eigenlayer-centric-roadmap-or-cancel-sharding/14141#what-is-eigenlayer-1).
+
+## Mantle DA - Powered by EigenDA Technology
+
+1. [EigenLayer](https://www.eigenlayer.xyz/) is a protocol built on Ethereum that introduces restaking, a new primitive in cryptoeconomic security. EigenDA (Data Availability), built by EigenLabs, is one core application on EigenLayer, which we have selected for Mantle Network's data availability module.
+2. The current version of MantleDA is powered by EigenDA technology and licensed by EigenLabs. The Mantle team has been working with the support of the EigenLayer team on this simplified solution until the canonical solution is ready for mainnet launch.
+3. For MantleDA, rollup data is available here: [State Roots on L1](https://etherscan.io/address/0x89E9D387555AF0cDE22cb98833Bae40d640AD7fa/advanced#internaltx), [Rollup Tx Data on L1](https://etherscan.io/address/0x291dc3819b863e19b0a9b9809F8025d2EB4aaE93), and [DA Rollup Tx on L2](https://explorer.mantle.xyz/eigenda-batches?batch_index=1196\&page_number=1\&page_size=50\&pages_limit=25).
+4. We plan to migrate to EigenDA after EigenDA mainnet launches.
+
+Note that: **Mantle DA**, allows permissioned nodes to provide data availability services to the Mantle network and requires \$MNT staking.
+
+<Info>
+See the section on [DA Nodes](/network/network/for-validators/network-roles#da-nodes) to find out more about how the different participating actors that are part of the **Mantle DA** module function.
+
+</Info>
+
+## Mantle DA Characteristics
+
+* Allows **decoupling** of the **data availability layer** from the **consensus layer**
+* Employs a **unicast channel** for **data exchange** between network participants to deliver efficiency gains both in terms of data transmission and storage
+* Maintaining an **erasure rate** ensures pieces of block data from L2 and L1 sources can be used by verifying actors to reconstruct complete block data
+
+This approach will provide the **high throughput** and **low gas cost** necessary for next-generation applications in blockchain gaming, decentralized social networks, and more.
+
+<Info>
+**Mantle Explorer** displays the [transaction batch details](https://explorer.mantle.xyz/eigenda-batches) for the rollup data that has been stored on the DA layer, just as it does for the transactions taking place on L2.
+
+</Info>
+
+

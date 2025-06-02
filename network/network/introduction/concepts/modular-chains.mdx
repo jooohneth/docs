@@ -1,0 +1,37 @@
+---
+title: "Modular Blockchain"
+description: Taking a modular chain approach to offer hyper-scaled transaction throughput
+---
+
+<Warning>
+Mantle v2 Tectonic has been released, please move to the new [documentation](https://docs-v2.mantle.xyz/)!
+
+</Warning>
+
+## Existing systems
+
+Traditional Optimistic Rollups (ORs) rely on Ethereum for data availability, final settlement, and as an execution layer for fraud proofs.
+
+To get a clearer idea on why we built Mantle network with a modular architecture, let's talk about the standard operations of a traditional OR.
+
+A typical OR can be thought of as a blockchain that processes L2 transactions on a separate execution layer, but ultimately relies on Ethereum for final settlement. In order to maintain Ethereum-level security, an OR must also use Ethereum for data availability and as an execution layer for fraud proofs. This design improves Ethereum's scaling, but also introduces several downsides:
+
+1. L2 users are exposed to expensive fees because the OR posts transaction data to Ethereum
+2. Using Ethereum as a data availability layer constrains throughput for L2 nodes
+3. Traditional ORs must allow for a lengthy challenge period (typically 7 days) before finality is achieved and users can exit their funds from the L2 chain
+
+Ideally, an L2 scaling solution should offer the benefits of an OR without the downsides of the current architecture.
+
+## Modular Rollups
+
+In a **Modular Blockchain**, the core functions of blockchain operation (execution, consensus, settlement, data availability) are performed on **specialized** layers. By applying this principle to a rollup, we are able to optimize the solution since each layer is now performing a specialized task. This leads to lower costs and better overall performance.
+
+Many popular blockchains like Ethereum, Binance Smart Chain, Solana, etc. handle processes such as execution, consensus, settlement, and data availability all at the node/network level (hence sometimes referred to as *Monolithic blockchains*). Modular blockchains essentially break these functions into separate layers that can be run by network actors at different levels. This translates to lower gas costs and better overall performance.
+
+A system like this is also a potential solution to the popular Scalability, Security, and Decentralization [blockchain trilemma](https://learn.bybit.com/deep-dive/blockchain-trilemma/). Here's how.
+
+1. The separation of resources results in increased network efficiency since each layer specializes at a particular task.
+2. All users operate at the same level of improved security, as opposed to only validators (full nodes) on L1.
+3. Technologies such as fraud proofs and ZK proofs that operate on separate layers reduce the overall execution and validation load on the nodes since they don't need to execute all the transactions for checking validity anymore.
+
+

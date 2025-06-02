@@ -1,0 +1,149 @@
+---
+title: "Deploying a Rollup Verifier/Replica Node"
+description: Deploy a verifier node and sync rollup data as a part of Mantle network
+---
+
+<Warning>
+Mantle v2 Tectonic has been released, please move to the new [documentation](https://docs-v2.mantle.xyz/)!
+
+</Warning>
+
+In order to build an app on Mantle network, you'll need access to a Mantle node. There are multiple public [Node RPC Providers](/network/network/for-devs/resources-and-tooling/node-rpc-providers) that you can choose from, or you can deploy your own depending on the requirements for your specific use cases.
+
+## Running Your Own Node
+
+<Warning>
+If you run a node, please keep a close eye on the latest update on our [GitHub Release](https://github.com/mantlenetworkio/mantle/releases) page
+
+</Warning>
+
+#### **Hardware Requirements**
+
+Nodes need to store the transaction history of Mantle and run `l2geth`.
+
+Recommended specs:
+
+* **CPU** - min. 4 cores, 8th Gen. or higher
+* **RAM** - min. 16 GB
+* **Storage** - min. 100 GB disk space free (HDD works for now, SSD is better)
+* **Bandwidth** - 10mb/s+ download
+
+#### Approximate Disk Usage
+
+Usage as of 2022-09-21:
+
+* Archive node: \~800gb
+* Full node: \~60gb
+
+#### Snapshot
+
+We recommend that you start the node with the latest [snapshot](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle), so that you don't need to wait a long time to sync data.
+
+### Deployment
+
+<Tabs>
+<Tab title="Running the node by Docker">
+
+The recommended method to create a replica is to use [Docker](https://www.docker.com/) and the [Docker images we provide](https://hub.docker.com/u/mantlenetworkio). They include all the configuration settings. We use these images for our own systems, and as such they will be more thoroughly tested than any other configuration.
+
+#### Node Configuration
+
+You can find instructions to build and operate your node on Mantle testnet and mainnet by following the links below:
+
+* [**Testnet node**](https://github.com/mantlenetworkio/networks/blob/main/run-node.md)
+* [**Mainnet node**](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md)
+
+</Tab>
+<Tab title="Running the node from binary">
+
+To compile a Mantle node locally and participate in the network as a Verifier, follow these steps:
+
+#### 1. Install Go and C Compiler
+
+Make sure Go (version 1.19) and a C compiler are installed on your system. You can use your preferred package manager (e.g., apt, yum, brew) to install them.
+
+#### 2. Clone the Mantle Repository
+
+Clone the Mantle GitHub repository using the following command:
+
+```php
+git clone https://github.com/mantlenetworkio/mantle.git
+```
+
+#### 3. Navigate to the `l2geth` Directory
+
+Navigate to the `l2geth` directory within the Mantle repository:
+
+```bash
+cd mantle/l2geth
+```
+
+#### 4. Compile the Mantle Geth Node
+
+Choose a stable release here and compile the Mantle Geth node using the Makefile with the following command:
+
+```go
+git checkout v0.4.3-5
+make geth
+```
+
+#### 5. Setup the environment
+
+```bash
+git clone https://github.com/mantlenetworkio/networks.git
+cd networks
+cd mainnet/envs
+set -a
+. ./geth.env
+set +a 
+mkdir ~/mantle_l2geth_data
+cd ../..
+export ETH1_HTTP=https://rpc.ankr.com/eth # change this
+export SEQUENCER_CLIENT_HTTP=https://rpc.mantle.xyz
+export ROLLUP_STATE_DUMP_PATH=https://mantlenetworkio.github.io/networks/mainnet/genesis.json
+export ROLLUP_CLIENT_HTTP=https://dtl.mantle.xyz
+export ROLLUP_BACKEND='l2'
+export ETH1_CTC_DEPLOYMENT_HEIGHT=8
+export RETRIES=60
+export ROLLUP_VERIFIER_ENABLE='true'
+export DATADIR=~/mantle_l2geth_data
+
+cp ../mantle/l2geth/build/bin/geth .
+export PATH=$PATH:$(pwd)
+```
+
+<Info>
+1. You need to change `ETH1_HTTP` to your own rpc
+2. You need to change `DATADIR` to where you want to store data
+3. If the sync speed is slow, try to change your DTL URL, you can check more details [here](/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node#network-dtl-url).
+
+</Info>
+
+#### 6. Start as a Verifier
+
+Start the node as a Verifier to join the Mantle network:
+
+```sh
+sh geth.sh
+```
+
+This command launches a local node configured as a Verifier to participate in the validation process within Mantle network.
+
+</Tab>
+</Tabs>
+
+## Appendix
+
+### Network DTL URL
+
+You can change the DTL service URL based on the network your node is going to connect to by updating the `ROLLUP_CLIENT_HTTP` value in the `docker-compose.yml` file for the Docker way and the `./mainnet/envs/geth.env` for the binary way.
+
+| Network | Region | URL                                                              |
+| ------- | ------ | ---------------------------------------------------------------- |
+| Mainnet | APAC   | [https://dtl.mantle.xyz](https://dtl.mantle.xyz)                 |
+| Mainnet | APAC   | [https://dtl-ap.mantle.xyz/](https://dtl-ap.mantle.xyz/)         |
+| Mainnet | EU     | [https://dtl-eu.mantle.xyz/](https://dtl-eu.mantle.xyz/)         |
+| Mainnet | US     | [https://dtl-us.mantle.xyz](https://dtl-us.mantle.xyz)           |
+| Testnet | All    | [https://dtl.testnet.mantle.xyz](https://dtl.testnet.mantle.xyz) |
+
+
