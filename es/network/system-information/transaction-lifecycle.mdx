@@ -1,0 +1,43 @@
+---
+- title: Ciclo de vida de la transacción
+---
+
+## Flujo de trabajo L2 -> L1 [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#l2---l1-workflow)
+
+### La Iniciación [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#1-the-initiation)
+
+Los usuarios de billeteras, dApps o algunos scripts pueden desear utilizar un sistema basado en blockchain para transferir fondos o ejecutar tareas.
+
+* Para los usuarios, se han conectado a la red Mantle añadiendo el punto final RPC del nodo secuenciador a su billetera.
+
+* Por otro lado, las dApps han integrado el [Mantle SDK](https://sdk.mantle.xyz/index.html) y lo han instanciado para comunicarse con la red Mantle. Están listos para enviar solicitudes que contienen la dirección del destinatario y la cantidad que desean transferir.
+
+Como con cualquier otro servicio, esta operación requiere un pago. No es solo por la transferencia en sí, sino también por mantener un registro público permanente e inmutable que cualquiera puede verificar. Su billetera o dApp debe asegurarse de que haya un saldo suficiente para ejecutar esta operación.
+
+* Para las billeteras, las cosas son más simples; ya que es más fácil calcular la tarifa requerida.
+
+* Las dApps necesitan hacer cálculos más detallados; para más información, consulte esta [section](/network/system-information/fee-mechanism).
+
+Utilizan las herramientas disponibles para componer una solicitud, la firman usando sus claves privadas y la envían a la Red Mantle donde un secuenciador está listo para procesarla. Aquí es donde la transacción entra por primera vez en Mantle. Más detalles [here](/network/system-information/off-chain-system/node-introduction#sequencer).
+
+### El Manejo [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#2-the-handling)
+
+La transacción desencadena el proceso estándar de verificación de estado, ejecutado por el software de la Máquina Virtual de Ethereum (EVM) ([`op-geth`](/network/system-information/off-chain-system/node-introduction#op-geth)) que se ejecuta en estos nodos. Esto es para asegurar que la transacción es fundamentalmente válida, se han pagado las tarifas necesarias y no ha ocurrido nada excepcional. Después de completar la transición de estado, el [`op-proposer`](/network/system-information/off-chain-system/node-introduction#op-proposer) propone una nueva raíz de Merkle del estado y la envía al contrato L1 correspondiente.
+
+<Info>
+  Es importante tener en cuenta que la presentación del estado no necesita ser ejecutada después de cada transacción, sino que se puede elegir presentar después de un lote de transacciones.
+</Info>
+
+La transacción actualiza el estado local (libro mayor) y espera un procesamiento adicional como parte de un bloque pendiente. Hasta ahora, este proceso es particularmente rápido. Muchos de estos bloques pendientes se combinan para formar lotes, que son codificados y comprimidos por [`op-batcher`](/network/system-information/off-chain-system/node-introduction#op-batcher) y enviados a Ethereum para la liquidación final. L2 logra bajas tarifas de transacción al distribuir los costos fijos entre múltiples transacciones en un lote.
+
+<Info>
+  Para detalles sobre el proceso de codificación y compresión de op-batcher, consulte esta [spec](https://github.com/mantlenetworkio/mantle-v2/blob/develop/specs/derivation.md#batch-submission).
+</Info>
+
+### El Almacenamiento [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#3-the-storage)
+
+A diferencia de los Rollups típicos, Mantle Network apunta a garantías de Disponibilidad de Datos (DA) más eficientes y rentables. Por lo tanto, opta por EigenDA, desarrollado basado en un componente DA de terceros. `op-batcher` necesita enviar todos los datos de transacción (no transacciones en bruto) a EigenDA para asegurar la integridad y efectividad de la red L2. Los nodos DA sincronizan los datos de los bloques y aseguran el acceso a ellos en cualquier momento a cambio de recompensas por proporcionar este servicio. Para información más detallada, consulte esta sección.
+
+EigenDA soporta el almacenamiento de datos y la derivación inversa, asegurando la disponibilidad de datos. Además del almacenamiento de datos, el almacenamiento de estado también es crucial.
+
+En Ethereum, hay una red de confianza completa lista para verificar la raíz de estado actualizada almacenada en el contrato. Una vez que un bloque pasa el mecanismo de consenso de Ethereum, se registra en la cadena segura. La transición de estado se considera válida una vez que la raíz de estado cargada pasa el período de desafío (típicamente 7 días).
