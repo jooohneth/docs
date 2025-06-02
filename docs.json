@@ -3,12 +3,12 @@
   "$schema": "https://mintlify.com/docs.json",
   "name": "Mantle Network",
   "colors": {
-    "primary": "#4DDE98",
-    "light": "#4DDE98",
-    "dark": "#4DDE98"
+    "primary": "#008F6A",
+    "light": "#008F6A",
+    "dark": "#008F6A"
   },
   "logo": {
-    "light": "/logo/light.jfif",
+    "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
 
