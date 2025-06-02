@@ -33,12 +33,12 @@ Actualmente hay cuatro roles para los nodos en la red Mantle, a saber **Sequence
 </Info>
 
 <Info>
-  Durante las fases iniciales del lanzamiento, los nodos TSS son operados por un grupo de instituciones de renombre, pero eventualmente serán elegidos a través de la gobernanza de Mantle de manera permisionless.
+  Durante las fases iniciales del lanzamiento, los nodos TSS son operados por un grupo de instituciones de renombre, pero eventualmente serán elegidos a través de la gobernanza de Mantle de manera sin permisos.
 </Info>
 
 ### Verificadores de Rollup / Nodos Réplica
 
-* Sincronizar datos de rollup desde el sequencer confiable de Mantle
+* Sincronizar datos de rollup del sequencer confiable de Mantle
 * Verificar las raíces de estado enviadas por los Sequencers en L2
 * Iniciar pruebas de fraude cuando se encuentran datos de estado inválidos
 * Servir datos de rollup a los usuarios
@@ -90,7 +90,7 @@ Son partes interesadas que juegan un papel importante en el protocolo de Prueba 
 
 La colección de contratos inteligentes relacionados con DA que se ejecutan en Ethereum se encargan de lo siguiente:
 
-* Asegúrese de que los datos solo se acepten como disponibles cuando un grupo de operadores con una cantidad suficiente de participación los haya firmado colectivamente
+* Asegurar que los datos solo se acepten como disponibles cuando un grupo de operadores con una cantidad suficiente de stake los haya firmado colectivamente
 * Implementar el protocolo de prueba de custodia y proporcionar mecanismos para que un desafiante revele datos en la cadena
 * Verificar la validez de los datos enviados por los Desafiantes contra un compromiso firmado, y aplicar recortes según lo dictado por el protocolo de prueba de custodia
 
@@ -106,7 +106,7 @@ El proceso de almacenamiento de datos en Mantle DA es el siguiente:
 Hay múltiples ventajas de ejecutar un nodo Verificador de Rollup.
 
 1. Otorga muchos de los beneficios de ejecutar un nodo de Ethereum, como la capacidad de simular transacciones L2 localmente**sin limitación de velocida&#x64;**(los RPC públicos pueden enfrentar tales limitaciones)**.**
-2. Permite a cualquiera verificar el trabajo realizado por los Secuenciadores al**volver a derivar las raíces de salida**y**compararlas**con las enviadas por el Secuenciador. En caso de discrepancia, los verificadores podrán realizar una comprobación de fallas y reclamar recompensas enviando pruebas de fraude en futuras versiones de Mainnet.
+2. Permite a cualquiera verificar el trabajo realizado por los Secuenciadores al**re-derivar las raíces de salida**y**compararlas**con las enviadas por el Secuenciador. En caso de discrepancia, los verificadores podrán realizar una comprobación de fallas y reclamar recompensas enviando pruebas de fraude en futuras versiones de Mainnet.
 
 <Info>
   **dApp builders**son alentados a considerar el valor añadido de ejecutar un nodo Verificador de Rollup dado que los costos generales tienden a ser bajos.

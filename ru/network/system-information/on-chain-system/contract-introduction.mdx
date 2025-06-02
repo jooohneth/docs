@@ -1,0 +1,47 @@
+---
+- title: Введение в контракты
+---
+
+Модуль блокчейна сети Mantle содержит ряд смарт-контрактов, которые работают в блокчейне для обеспечения децентрализованного и надежного выполнения. Эти контракты отвечают за обработку логики различных dApps, взаимодействующих с блокчейном, а также за взаимодействие офчейн-системы с ончейн-системой, включая переводы активов, обмен активов и так далее.
+
+## Объяснение контрактов
+
+### L1CrossDomainMessengerProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1crossdomainmessengerproxy)
+
+Этот контракт является прокси для контракта L1CrossDomainMessenger на L2, который может использоваться для взаимодействия с контрактом L2 из L1.
+
+Контракт L1CrossDomainMessenger представляет собой высокоуровневый интерфейс для отправки сообщений в сеть Mantle и получения сообщений из нее (из L1 в L2).
+
+### L1StandardBridgeProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1standardbridgeproxy)
+
+Этот контракт является прокси для контракта L1StandardBridge на L2, который может использоваться для взаимодействия с мостом L2 из L1.
+
+L1StandardBridge - это стандартизированный контракт для передачи токенов ERC20 в/из сети Mantle
+
+### L1ERC721BridgeProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1erc721bridgeproxy)
+
+Прокси-контракт для передачи токенов ERC721 в/из сети Mantle.
+
+### L2OutputOracleProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l2outputoracleproxy)
+
+Прокси-контракт, который хранит обязательства состояния сети Mantle, которые могут использоваться контрактами на L1 для доступа к состоянию L2
+
+### OptimismMintableERC20FactoryProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#optimismmintableerc20factoryproxy)
+
+Прокси-контракт фабричного контракта для создания токенов ERC20.
+
+### OptimismPortalProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#optimismportalproxy)
+
+Прокси-контракт низкоуровневого интерфейса передачи сообщений.
+
+### ProxyAdmin[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#proxyadmin)
+
+Административный контракт для контрактов, является владельцем всех прокси-контрактов. Он может использоваться для обновления большинства системных контрактов в Mantle.
+
+### SystemConfigProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#systemconfigproxy)
+
+Это прокси-контракт системного контракта, который хранит значения конфигурации для ончейн-системы.
+
+### AddressManager[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#addressmanager)
+
+AddressManager - это устаревший контракт, который использовался в старой версии системы Mantle для управления реестром строковых имен и адресов.

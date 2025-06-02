@@ -8,7 +8,7 @@
   <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2F3885809119-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FQliZlRNwHhmzesDU1Ksq%252Fuploads%252F1o9uAiv2DISiwmBDsbM0%252Fimage.png%3Falt%3Dmedia%26token%3D96987e57-f25f-44e7-9d08-5a9c9bf2a627&width=768&dpr=4&quality=100&sign=bc1bfe96&sv=2" />
 </Frame>
 
-Este diagrama ilustra cómo los diferentes módulos y componentes de la red interactúan a través de la ejecución de transacciones en Mantle v2 Tectonic. Representa el proceso de interacción con la Disponibilidad de Datos de Mantle (DA) soportada por EigenDA para almacenar datos de Rollup y eventualmente publicar datos de estado actualizados en el L1 de Ethereum.
+Este diagrama ilustra cómo los diferentes módulos y componentes de la red interactúan a través de la ejecución de transacciones en Mantle v2 Tectonic. Representa el proceso de interacción con Mantle Data Availability (DA) soportado por EigenDA para almacenar datos de Rollup y eventualmente publicar datos de estado actualizados en Ethereum L1.
 
 Revisemos el proceso de procesamiento de transacciones para entender mejor el funcionamiento de cada módulo.
 
@@ -24,7 +24,7 @@ Revisemos el proceso de procesamiento de transacciones para entender mejor el fu
   Si desea aprender más sobre el diseño on-chain y off-chain en la Red Mantle, consulte las páginas de [**on-chain system**](/network/system-information/on-chain-system) y [**off-chain system**](/network/system-information/off-chain-system)!
 </Info>
 
-## Pool de Transacciones en Mantle [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#transaction-pool-in-mantle)
+## Pool de transacciones en Mantle [→](https://docs-v2.mantle.xyz/devs/concepts/tx-lifecycle#transaction-pool-in-mantle)
 
 En Mantle v2 Tectonic, se introduce una estructura de pool de transacciones similar al mempool de Ethereum para el almacenamiento temporal de transacciones hasta que se incluyen en un bloque. La introducción del pool de transacciones en L2 tiene como objetivo mejorar el empaquetado de transacciones. Con el soporte de Mantle v2 Tectonic para [EIP-1559 transaction types](/network/more/glossary#eip-1559-transaction), los usuarios pueden controlar la velocidad de empaquetado de transacciones manipulando la tarifa de prioridad en las transacciones. El pool de transacciones se utiliza para almacenar temporalmente esas transacciones no empaquetadas.
 

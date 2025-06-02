@@ -1,0 +1,35 @@
+---
+- title: Testnet v0.4.3
+---
+
+Это обновление сети приносит следующие изменения:
+
+* Оптимизированная комиссия за транзакции уровня 2 (L2), позволяющая пользователям настраивать комиссии за транзакции в более широком диапазоне для поддержки Account Abstraction (AA)
+* Оптимизированная стратегия отправки роллапов для достижения более низких комиссий за газ в сценариях с более высоким TPS
+* Оптимизированная стратегия обновления данных газового оракула для обеспечения более стабильной способности сети L2 к реальному времени корректировки комиссий за транзакции.
+* Добавлены файлы аудиторского отчета Mantle
+
+Для получения более подробной информации о том, как вышеупомянутые функции были включены в кодовую базу, перейдите по ссылкам ниже, чтобы перейти в репозиторий Mantle на GitHub.**Ссылки на GitHub：**
+
+* Полный список изменений: [https://github.com/mantlenetworkio/mantle/releases](https://github.com/mantlenetworkio/mantle/releases)
+* Соответствующие запросы на слияние:
+  * Оптимизированная комиссия за транзакции L2: [https://github.com/mantlenetworkio/mantle/pull/1144](https://github.com/mantlenetworkio/mantle/pull/1144)
+  * Оптимизированная стратегия отправки роллапов: [https://github.com/mantlenetworkio/mantle/pull/1301](https://github.com/mantlenetworkio/mantle/pull/1301)
+  * Оптимизированная стратегия обновления данных газового оракула:
+    * [https://github.com/mantlenetworkio/mantle/pull/1345](https://github.com/mantlenetworkio/mantle/pull/1345,)
+    * [https://github.com/mantlenetworkio/mantle/pull/1346](https://github.com/mantlenetworkio/mantle/pull/1346)
+  * Файлы аудиторского отчета Mantle: [https://github.com/mantlenetworkio/mantle/pull/1333](https://github.com/mantlenetworkio/mantle/pull/1333)
+
+## Инструкции для операторов узлов
+
+Пожалуйста, следуйте шагам ниже для обновления вашего узла：
+
+1. Остановить текущий docker сервис
+2. Изменить тег образа в `docker-compose.yml`, Заменить текущий образ с `mantlenetworkio/l2geth:v0.4.0-1` на [`mantlenetworkio/l2geth:v0.4.3`](https://hub.docker.com/r/mantlenetworkio/l2geth/tags)
+3. Запустить новый docker сервис
+
+<Info>
+  Обратите внимание, что для запуска нового узла необходимо изменить следующую конфигурацию: [https://github.com/mantlenetworkio/networks/pull/31/files](https://github.com/mantlenetworkio/networks/pull/31/files)
+</Info>
+
+4. Проверить логи, чтобы увидеть статус

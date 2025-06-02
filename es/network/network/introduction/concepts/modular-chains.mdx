@@ -5,19 +5,19 @@
 ---
 
 <Warning>
-  Mantle v2 Tectonic ha sido lanzado, por favor pase a la nueva[documentación](https://docs-v2.mantle.xyz/)!
+  Mantle v2 Tectonic ha sido lanzado, por favor pasa a la nueva[documentación](https://docs-v2.mantle.xyz/)!
 </Warning>
 
 ## Sistemas existentes
 
-Los Optimistic Rollups (ORs) tradicionales dependen de Ethereum para la disponibilidad de datos, liquidación final y como capa de ejecución para pruebas de fraude.
+Los Optimistic Rollups (ORs) tradicionales dependen de Ethereum para la disponibilidad de datos, la liquidación final y como capa de ejecución para las pruebas de fraude.
 
 Para tener una idea más clara de por qué construimos la red Mantle con una arquitectura modular, hablemos sobre las operaciones estándar de un OR tradicional.
 
-Un OR típico puede considerarse como una blockchain que procesa transacciones L2 en una capa de ejecución separada, pero que en última instancia depende de Ethereum para la liquidación final. Para mantener el nivel de seguridad de Ethereum, un OR también debe usar Ethereum para la disponibilidad de datos y como capa de ejecución para pruebas de fraude. Este diseño mejora la escalabilidad de Ethereum, pero también introduce varias desventajas:
+Un OR típico puede considerarse como una blockchain que procesa transacciones L2 en una capa de ejecución separada, pero que en última instancia depende de Ethereum para la liquidación final. Para mantener el nivel de seguridad de Ethereum, un OR también debe usar Ethereum para la disponibilidad de datos y como capa de ejecución para las pruebas de fraude. Este diseño mejora la escalabilidad de Ethereum, pero también introduce varias desventajas:
 
 1. Los usuarios de L2 están expuestos a tarifas costosas porque el OR publica datos de transacciones en Ethereum
-2. Usar Ethereum como capa de disponibilidad de datos limita el rendimiento para los nodos L2
+2. El uso de Ethereum como capa de disponibilidad de datos limita el rendimiento para los nodos L2
 3. Los ORs tradicionales deben permitir un largo período de desafío (típicamente 7 días) antes de que se logre la finalidad y los usuarios puedan retirar sus fondos de la cadena L2
 
 Idealmente, una solución de escalado L2 debería ofrecer los beneficios de un OR sin las desventajas de la arquitectura actual.
