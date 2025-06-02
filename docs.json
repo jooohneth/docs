@@ -11,11 +11,6 @@
     "light": "/logo/light.svg",
     "dark": "/logo/dark.svg"
   },
-
-  "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
-  },
-
   "favicon": "/favicon.ico",
   "navbar": {
     "links": [
@@ -135,6 +130,7 @@
         ]
       },
       {
+        "language": "es",
         "dropdowns": [
           {
             "dropdown": "Mantle v2",
@@ -143,6 +139,7 @@
               {
                 "group": "INTRODUCCIÓN",
                 "pages": [
+                  "es/index",
                   "es/network",
                   {
                     "group": "Avisos Actualizados",
@@ -160,7 +157,7 @@
                   "es/network/system-information/architecture",
                   "es/network/system-information/transaction-lifecycle",
                   {
-                    "group": "Sistema En-Cadena",
+                    "group": "Sistema En Cadena",
                     "pages": [
                       "es/network/system-information/on-chain-system/contract-introduction",
                       "es/network/system-information/on-chain-system/key-l1-contract-address"
@@ -209,8 +206,86 @@
               }
             ]
           }
-        ],
-        "language": "es"
+        ]
+      },
+      {
+        "language": "ru",
+        "dropdowns": [
+          {
+            "dropdown": "Mantle v2",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "ВВЕДЕНИЕ",
+                "pages": [
+                  "ru/index",
+                  "ru/network",
+                  {
+                    "group": "Обновленные уведомления",
+                    "pages": [
+                      "ru/network/introduction/updated-notices/eigenda-migration-for-mantle-sepolia",
+                      "ru/network/introduction/updated-notices/mantle-network-mainnet-v2-tectonic-upgrade-guide"
+                    ]
+                  },
+                  "ru/network/introduction/whats-new-in-mantle-v2-everest"
+                ]
+              },
+              {
+                "group": "ИНФОРМАЦИЯ О СИСТЕМЕ",
+                "pages": [
+                  "ru/network/system-information/architecture",
+                  "ru/network/system-information/transaction-lifecycle",
+                  {
+                    "group": "Система на блокчейне",
+                    "pages": [
+                      "ru/network/system-information/on-chain-system/contract-introduction",
+                      "ru/network/system-information/on-chain-system/key-l1-contract-address"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Mantle v1",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "ВВЕДЕНИЕ",
+                "pages": [
+                  "ru/network/network",
+                  {
+                    "group": "Ключевые концепции",
+                    "pages": [
+                      "ru/network/network/introduction/concepts/optimistic-rollups",
+                      "ru/network/network/introduction/concepts/modular-chains",
+                      "ru/network/network/introduction/concepts/data-availability"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "ДЛЯ ВАЛИДАТОРОВ",
+                "pages": [
+                  "ru/network/network/for-validators/network-roles",
+                  {
+                    "group": "Развертывание узла",
+                    "pages": [
+                      "ru/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node"
+                    ]
+                  },
+                  {
+                    "group": "Обновления сети",
+                    "pages": [
+                      "ru/network/network/for-validators/network-updates/testnet-v0.4.3",
+                      "ru/network/network/for-validators/network-updates/testnet-v0.4.0"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -225,5 +300,13 @@
     "family": "GT Walsheim",
     "source": "https://mintlify-assets.b-cdn.net/fonts/GT-Walsheim-Medium.woff2",
     "format": "woff2"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   }
 }

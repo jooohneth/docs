@@ -1,0 +1,142 @@
+---
+- title: Развертывание узла Верификатора/Реплики Rollup
+- description: Разверните узел верификатора и синхронизируйте данные rollup как
+    часть сети Mantle
+---
+
+<Warning>
+  Mantle v2 Tectonic выпущен, пожалуйста, перейдите к новой [документации](https://docs-v2.mantle.xyz/)!
+</Warning>
+
+Чтобы создать приложение в сети Mantle, вам потребуется доступ к узлу Mantle. Существует несколько публичных [Node RPC Providers](/network/network/for-devs/resources-and-tooling/node-rpc-providers), которые вы можете выбрать, или вы можете развернуть свой собственный в зависимости от требований вашего конкретного случая использования.
+
+## Запуск собственного узла
+
+<Warning>
+  Если вы запускаете узел, пожалуйста, внимательно следите за последними обновлениями на нашей странице [GitHub Release](https://github.com/mantlenetworkio/mantle/releases)
+</Warning>
+
+#### **Требования к оборудованию**
+
+Узлы должны хранить историю транзакций Mantle и запускать `l2geth`.
+
+Рекомендуемые характеристики:
+
+* **CPU** - мин. 4 ядра, 8-го поколения или выше
+* **RAM** - мин. 16 ГБ
+* **Хранилище** - мин. 100 ГБ свободного дискового пространства (HDD подойдет на данный момент, SSD лучше)
+* **Пропускная способность** - 10 Мбит/с+ скорость загрузки
+
+#### Приблизительное использование диска
+
+Использование по состоянию на 21.09.2022:
+
+* Архивный узел: \~800 ГБ
+* Полный узел: \~60 ГБ
+
+#### Снапшот
+
+Мы рекомендуем запускать узел с последним [снапшотом](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle), чтобы вам не пришлось долго ждать синхронизации данных.
+
+### Развертывание
+
+<Tabs>
+  <Tab title="Запуск узла с помощью Docker">
+    Рекомендуемый метод создания реплики - использование [Docker](https://www.docker.com/) и [Docker-образов, которые мы предоставляем](https://hub.docker.com/u/mantlenetworkio). Они включают все настройки конфигурации. Мы используем эти образы для наших собственных систем, и поэтому они будут более тщательно протестированы, чем любая другая конфигурация.
+
+    #### Конфигурация узла
+
+    Вы можете найти инструкции по сборке и эксплуатации вашего узла в тестовой сети и основной сети Mantle, перейдя по ссылкам ниже:
+
+    * [**Узел тестовой сети**](https://github.com/mantlenetworkio/networks/blob/main/run-node.md)
+    * [**Узел основной сети**](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md)
+  </Tab>
+
+  <Tab title="Запуск узла из бинарного файла">
+    Чтобы скомпилировать узел Mantle локально и участвовать в сети в качестве Верификатора, выполните следующие шаги:
+
+    #### 1. Установите Go и C-компилятор
+
+    Убедитесь, что на вашей системе установлены Go (версия 1.19) и C-компилятор. Вы можете использовать предпочитаемый менеджер пакетов (например, apt, yum, brew) для их установки.
+
+    #### 2. Клонируйте репозиторий Mantle
+
+    Клонируйте GitHub-репозиторий Mantle, используя следующую команду:
+
+    ```php
+    git clone https://github.com/mantlenetworkio/mantle.git
+    ```
+
+    #### 3. Перейдите в директорию `l2geth`
+
+    Перейдите в директорию `l2geth` внутри репозитория Mantle:
+
+    ```bash
+    cd mantle/l2geth
+    ```
+
+    #### 4. Скомпилируйте узел Mantle Geth
+
+    Выберите стабильный релиз здесь и скомпилируйте узел Mantle Geth, используя Makefile, следующей командой:
+
+    ```go
+    git checkout v0.4.3-5
+    make geth
+    ```
+
+    #### 5. Настройте окружение
+
+    ```bash
+    git clone https://github.com/mantlenetworkio/networks.git
+    cd networks
+    cd mainnet/envs
+    set -a
+    . ./geth.env
+    set +a 
+    mkdir ~/mantle_l2geth_data
+    cd ../..
+    export ETH1_HTTP=https://rpc.ankr.com/eth # change this
+    export SEQUENCER_CLIENT_HTTP=https://rpc.mantle.xyz
+    export ROLLUP_STATE_DUMP_PATH=https://mantlenetworkio.github.io/networks/mainnet/genesis.json
+    export ROLLUP_CLIENT_HTTP=https://dtl.mantle.xyz
+    export ROLLUP_BACKEND='l2'
+    export ETH1_CTC_DEPLOYMENT_HEIGHT=8
+    export RETRIES=60
+    export ROLLUP_VERIFIER_ENABLE='true'
+    export DATADIR=~/mantle_l2geth_data
+
+    cp ../mantle/l2geth/build/bin/geth .
+    export PATH=$PATH:$(pwd)
+    ```
+
+    <Info>
+      1. Вам нужно изменить `ETH1_HTTP` на ваш собственный rpc
+      2. Вам нужно изменить `DATADIR` на место, где вы хотите хранить данные
+      3. Если скорость синхронизации низкая, попробуйте изменить URL DTL, подробнее можно узнать [здесь](/ru/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node#network-dtl-url).
+    </Info>
+
+    #### 6. Запустите как Верификатор
+
+    Запустите узел как Верификатор, чтобы присоединиться к сети Mantle:
+
+    ```sh
+    sh geth.sh
+    ```
+
+    Эта команда запускает локальный узел, настроенный как Верификатор, для участия в процессе валидации в сети Mantle.
+  </Tab>
+</Tabs>
+
+## Приложение
+
+### URL DTL сети
+
+Вы можете изменить URL сервиса DTL в зависимости от сети, к которой будет подключаться ваш узел, обновив значение `ROLLUP_CLIENT_HTTP` в файле `docker-compose.yml` для Docker-способа и `./mainnet/envs/geth.env` для бинарного способа.
+
+| Сеть          | Регион | URL                                                              |
+| ------------- | ------ | ---------------------------------------------------------------- |
+| Основная сеть | APAC   | [https://dtl.mantle.xyz](https://dtl.mantle.xyz)                 |
+| Основная сеть | APAC   | [https://dtl-ap.mantle.xyz/](https://dtl-ap.mantle.xyz/)         |
+| Основная сеть | EU     | [https://dtl-eu.mantle.xyz/](https://dtl-eu.mantle.xyz/)         |
+| Основная сеть | US     | [https://dtl-us.mantle.xyz](https://dtl-us.mantle.xyz)           |
+| Тестовая сеть | Все    | [https://dtl.testnet.mantle.xyz](https://dtl.testnet.mantle.xyz) |

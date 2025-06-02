@@ -5,11 +5,11 @@
 Esta actualización de la red trae los siguientes cambios:
 
 * Tarifa de transacción de capa 2 (L2) optimizada, permitiendo a los usuarios personalizar las tarifas de transacción dentro de un rango más amplio para soportar la Abstracción de Cuenta (AA)
-* Estrategia de envío de rollup optimizada para lograr tarifas de gas más bajas en escenarios con TPS más alto
+* Estrategia de envío de rollup optimizada para lograr tarifas de gas más bajas en escenarios con mayor TPS
 * Estrategia de actualización de datos del oráculo de gas optimizada para asegurar que la red L2 tenga una capacidad de ajuste en tiempo real más estable para las tarifas de transacción.
 * Añadidos archivos de informe de auditoría de Mantle
 
-Para más detalles sobre cómo se incluyeron las características mencionadas anteriormente en el código base, siga los enlaces a continuación para navegar al repositorio GitHub de Mantle.**Enlaces de GitHub：**
+Para más detalles sobre cómo se incluyeron las características mencionadas anteriormente en el código base, sigue los enlaces a continuación para navegar al repositorio GitHub de Mantle.**Enlaces de GitHub：**
 
 * Registro de cambios completo:[https://github.com/mantlenetworkio/mantle/releases](https://github.com/mantlenetworkio/mantle/releases)
 * Solicitudes de extracción relevantes:
@@ -22,14 +22,14 @@ Para más detalles sobre cómo se incluyeron las características mencionadas an
 
 ## Instrucciones para Operadores de Nodos
 
-Por favor, siga los pasos a continuación para actualizar su nodo：
+Por favor, sigue los pasos a continuación para actualizar tu nodo：
 
 1. Detener el servicio docker actual
-2. Cambiar la etiqueta de imagen en el`docker-compose.yml`, Reemplazar la imagen actual de`mantlenetworkio/l2geth:v0.4.0-1`a[`mantlenetworkio/l2geth:v0.4.3`](https://hub.docker.com/r/mantlenetworkio/l2geth/tags)
+2. Cambiar la etiqueta de imagen en el `docker-compose.yml`, Reemplazar la imagen actual de `mantlenetworkio/l2geth:v0.4.0-1` a [`mantlenetworkio/l2geth:v0.4.3`](https://hub.docker.com/r/mantlenetworkio/l2geth/tags)
 3. Iniciar nuevo servicio docker
 
 <Info>
-  Tenga en cuenta que la siguiente configuración necesita ser modificada para iniciar un nuevo nodo:[https://github.com/mantlenetworkio/networks/pull/31/files](https://github.com/mantlenetworkio/networks/pull/31/files)
+  Tenga en cuenta que se debe modificar la siguiente configuración para iniciar un nuevo nodo: [https://github.com/mantlenetworkio/networks/pull/31/files](https://github.com/mantlenetworkio/networks/pull/31/files)
 </Info>
 
 4. Revisar los registros para ver el estado

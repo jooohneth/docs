@@ -5,17 +5,17 @@
 ---
 
 <Warning>
-  Mantle v2 Tectonic ha sido lanzado, ¡por favor, pase a la nueva[documentación](https://docs-v2.mantle.xyz/)!
+  Mantle v2 Tectonic ha sido lanzado, ¡por favor, pase a la nueva[documentation](https://docs-v2.mantle.xyz/)!
 </Warning>
 
 Mantle Network es una pila tecnológica para escalar Ethereum, y nos esforzamos por ser compatibles con EVM al hacerlo. Ser compatible con EVM significa que todos los contratos y herramientas que funcionan en Ethereum también funcionan en Mantle Network con modificaciones mínimas. Los usuarios pueden experimentar con emocionantes aplicaciones web3, y los desarrolladores pueden implementar contratos inteligentes en un entorno eficiente y de bajo costo.
 
-En su núcleo, Mantle Network ha sido construido con una arquitectura modular que combina un protocolo de rollup optimista con una solución innovadora de disponibilidad de datos. Esto permite que Mantle Network herede la seguridad de Ethereum Y ofrezca una disponibilidad de datos más barata y accesible.
+En su núcleo, Mantle Network ha sido construido con una arquitectura modular que combina un protocolo de rollup optimista con una innovadora solución de disponibilidad de datos. Esto permite que Mantle Network herede la seguridad de Ethereum Y ofrezca una disponibilidad de datos más barata y accesible.
 
 <Info>
   Si encuentra alguno de estos términos poco familiar, le animamos a visitar[Optimistic Rollups](/es/network/network/introduction/concepts/optimistic-rollups)y las páginas que siguen donde repasamos blockchain, rollups y las innovaciones clave de Mantle de una manera más accesible.
 
-  Por otro lado, si estos términos le emocionan por el futuro del escalado de blockchain, ¡le animamos a seguir leyendo!
+  Por otro lado, si estos términos le emocionan por el futuro del escalado blockchain, ¡le animamos a seguir leyendo!
 </Info>
 
 ## Mantle Network vs. Cadenas No-Rollup
@@ -50,9 +50,9 @@ Mantle Network adopta un enfoque modular en el diseño de la cadena. Mientras qu
 
 ## Propiedades del Secuenciador
 
-El secuenciador centralizado en Mantle Network produce bloques L2 incluyendo transacciones en ellos en el orden en que son recibidas por los nodos. También publica raíces de estado actualizadas en L1.
+El secuenciador centralizado en Mantle Network produce bloques L2 incluyendo transacciones en ellos en el orden en que son recibidas por los nodos. También publica raíces de estado actualizadas a L1.
 
-Incluimos un módulo de secuenciador adicional denominado[Threshold Signature Scheme](/network/network/introduction/concepts/threshold-signature-scheme)(TSS). Este módulo consiste en un conjunto de operadores de nodos en lista blanca que firman bloques y contribuyen a firmas multipartitas que ayudan a mejorar la corrección de los resultados de ejecución de transacciones fuera de la cadena. En caso de que no se cumpla un umbral*N de M*, el secuenciador puede volver a secuenciar un lote de bloques L2, o hacer la transición a un secuenciador de respaldo.
+Incluimos un módulo de secuenciador adicional denominado[Threshold Signature Scheme](/network/network/introduction/concepts/threshold-signature-scheme)(TSS). Este módulo consiste en un conjunto de operadores de nodos en lista blanca que firman bloques y contribuyen a firmas multipartitas que ayudan a mejorar la corrección de los resultados de ejecución de transacciones fuera de la cadena. En caso de que no se cumpla un umbral*N of M*, el secuenciador puede volver a secuenciar un lote de bloques L2, o hacer la transición a un secuenciador de respaldo.
 
 <Info>
   La transición a un secuenciador de respaldo es controlada por el equipo central de DevOps, con medidas en lugar para minimizar el tiempo de inactividad.
@@ -62,7 +62,7 @@ Incluimos un módulo de secuenciador adicional denominado[Threshold Signature Sc
 
 Los Rollups Optimistas ejecutan transacciones que resultan en transiciones de estado, y los datos de estado actualizados se publican en L1 Ethereum asumiendo su validez y sin proporcionar pruebas directas de los mismos. Mantle Network envía datos de estado actualizados a un contrato de Cadena de Compromiso de Estado (SCC) en L1, donde los actores de la red pueden desafiar su validez dentro de un período de desafío (actualmente establecido en 7 días). Si los datos de estado no son desafiados, se consideran válidos y finales y las solicitudes de retiro que dependen de estos datos de estado pueden ser procesadas por otros contratos inteligentes.
 
-Si un compromiso es desafiado, un verificador interactúa con el desafiante para reducir la invalidez a una sola transición de estado, momento en el cual se establece su validez ejecutándola. En caso de un desafío exitoso, la transición de estado se descarta y el contrato acepta la versión válida del estado actualizado presentada por el desafiante.
+Si un compromiso es desafiado, un verificador interactúa con el desafiante para reducir la invalidez a una sola transición de estado, en cuyo punto su validez se establece ejecutándola. En caso de un desafío exitoso, la transición de estado se descarta y el contrato acepta la versión válida del estado actualizado presentado por el desafiante.
 
 <Info>
   Para conocer más sobre las ventajas de este mecanismo, consulta la [Fraud Proofs](/network/network/introduction/concepts/fraud-proofs) página que habla de ello en detalle.
@@ -70,11 +70,11 @@ Si un compromiso es desafiado, un verificador interactúa con el desafiante para
 
 ## Data Availability
 
-La disponibilidad de datos (de los datos de lotes de L2) es un aspecto crítico de los rollups de Ethereum, de modo que los validadores de L1 puedan verificar el estado de L2. DA es generalmente el componente más costoso de los rollups, ya que requiere espacio en los bloques de Ethereum L1. Los enfoques comunes de la industria para la disponibilidad de datos incluyen:
+La disponibilidad de datos (de los datos del lote L2) es un aspecto crítico de los rollups de Ethereum, de modo que los validadores L1 puedan verificar el estado L2. DA es generalmente el componente más costoso de los rollups, ya que requiere espacio en el bloque L1 de Ethereum. Los enfoques comunes de la industria para la disponibilidad de datos incluyen:
 
 * **On-Chain L1:** Todos los datos necesarios para la construcción de pruebas están disponibles en L1.
-* **Centralized DA Committees:** Los datos para la construcción de pruebas no están disponibles en L1. Existe un comité encargado de proporcionar los datos. Este enfoque presenta ahorros de costos significativos para el rollup, con el riesgo de que los datos se vuelvan indisponibles.
-* **Modular Data Availability\*\*:** Módulos de DA independientes, como Mantle DA impulsado por la tecnología [EigenLayer's](https://www.eigenlayer.xyz/) EigenDA. La disponibilidad de datos se habilita mediante la teoría de juegos económicos de DA que involucra recompensas y recorte de stake. Según evaluaciones internas, esto se traduce en un ahorro de costos del 30-70% en comparación con on-chain L1.
+* **Comités Centralizados de DA:** Los datos para la construcción de pruebas no están disponibles en L1. Existe un comité encargado de suministrar los datos. Este enfoque presenta ahorros de costos significativos para el rollup, con el riesgo de que los datos se vuelvan indisponibles.
+* **Disponibilidad de Datos Modular\*\*:** Módulos independientes de DA, como Mantle DA impulsado por la tecnología [EigenLayer's](https://www.eigenlayer.xyz/) EigenDA. La disponibilidad de datos se habilita mediante la teoría de juegos económicos de DA que involucra recompensas y recorte de stake. Según evaluaciones internas, esto se traduce en un ahorro de costos del 30-70% en comparación con on-chain L1.
 
 *\*\* denota el enfoque de la versión inicial de Mantle Network Mainnet*
 
