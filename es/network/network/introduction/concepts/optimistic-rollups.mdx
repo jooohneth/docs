@@ -1,0 +1,28 @@
+---
+- title: Optimistic Rollups
+- description: Llevando el procesamiento de transacciones fuera de Ethereum a L2s
+---
+
+<Warning>
+  Mantle v2 Tectonic ha sido lanzado, por favor pase a la nueva [documentación](https://docs-v2.mantle.xyz/)!
+</Warning>
+
+### **¿Qué son** los Rollups Optimistas?
+
+Los Rollups Optimistas (ORs) son protocolos de Capa 2 (L2) diseñados para aumentar el rendimiento de Ethereum. Reducen la carga de cómputo en la cadena principal de Ethereum al llevar el cómputo y el almacenamiento de estado fuera de la cadena y procesar las transacciones en lotes.
+
+Hay algunas soluciones de escalado diferentes actualmente en uso por varios proyectos, tales como:
+
+* **Sidechains:** Cadenas de bloques independientes que están vinculadas a una cadena principal, pero mantienen los datos de bloque por separado y utilizan sus propios modelos de consenso. Por ejemplo, Polygon.
+* **Cadenas Plasma:** Análogas a las cadenas hijas que también mantienen su propio proceso de validación de datos de bloque, excepto que son de naturaleza no custodial desde la perspectiva de los activos, lo que significa que los usuarios pueden salir con sus fondos en caso de una anomalía.
+
+A diferencia de las soluciones mencionadas anteriormente, los ORs derivan la seguridad de la red principal de Ethereum al publicar los resultados de las transacciones en la cadena.
+
+Los ORs se consideran "*optimistas* porque asumen que las transacciones fuera de la cadena son válidas y no publican pruebas de validez para los lotes de transacciones publicados en la cadena. Pero, ¿cómo detectan y manejan los estados inválidos entonces? Aquí es donde entran las Pruebas de Fraude.
+
+Los actores de la red envían pruebas de fraude si detectan transacciones inválidas. Los contratos inteligentes en la red principal de Ethereum luego ejecutan las transacciones individuales (o un bloque entero si es necesario) para verificar su validez. Si se confirma que son inválidas, el remitente del lote (el *Sequencer*) recibe un recorte de su participación (depositada como fianza al momento de la presentación del lote), estableciendo un desincentivo para desalentar presentaciones inválidas.
+
+**Para más detalles, recomendamos leer:**
+
+* [Introduction to Optimistic Rollups](https://medium.com/privacy-scaling-explorations/an-introduction-to-optimisms-optimistic-rollup-8450f22629e8) - Optimism
+* [An Incomplete Guide to Rollups](https://vitalik.ca/general/2021/01/05/rollup.html) - Vitalik Buterin

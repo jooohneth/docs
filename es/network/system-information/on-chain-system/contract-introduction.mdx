@@ -1,0 +1,47 @@
+---
+- title: Introducción al Contrato
+---
+
+El módulo on-chain de Mantle Network contiene una serie de contratos inteligentes que se ejecutan en la blockchain para garantizar una ejecución descentralizada y confiable. Estos contratos son responsables de manejar la lógica de varias dApps que interactúan con la blockchain, así como la interacción del sistema off-chain con el sistema on-chain, incluyendo transferencias de activos, intercambios de activos, y demás.
+
+## Contrato Explicado
+
+### L1CrossDomainMessengerProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1crossdomainmessengerproxy)
+
+Este contrato es un proxy para el contrato L1CrossDomainMessenger en el L2, que puede ser utilizado para la interacción con el contrato L2 desde L1.
+
+El contrato L1CrossDomainMessenger es una interfaz de alto nivel para enviar mensajes a y recibir mensajes de Mantle Network (de L1 a L2).
+
+### L1StandardBridgeProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1standardbridgeproxy)
+
+Este contrato es un proxy para el contrato L1StandardBridge en el L2, que puede ser utilizado para la interacción con el puente L2 desde L1.
+
+El L1StandardBridge es un contrato estandarizado para transferir tokens ERC20 hacia/desde Mantle Network
+
+### L1ERC721BridgeProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l1erc721bridgeproxy)
+
+El contrato proxy para transferir tokens ERC721 hacia/desde Mantle Network.
+
+### L2OutputOracleProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#l2outputoracleproxy)
+
+El contrato proxy que almacena compromisos del estado de Mantle Network, que puede ser utilizado por contratos en L1 para acceder al estado L2
+
+### OptimismMintableERC20FactoryProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#optimismmintableerc20factoryproxy)
+
+El contrato proxy del contrato de fábrica para acuñar tokens ERC20.
+
+### OptimismPortalProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#optimismportalproxy)
+
+El contrato proxy de la interfaz de paso de mensajes de bajo nivel.
+
+### ProxyAdmin[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#proxyadmin)
+
+Contrato de administración para los contratos, es el propietario de todos los contratos proxy. Puede ser utilizado para actualizar la mayoría de los contratos del sistema en Mantle.
+
+### SystemConfigProxy[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#systemconfigproxy)
+
+Este es un contrato proxy del contrato del sistema que almacena los valores de configuración para el sistema on-chain.
+
+### AddressManager[→](https://docs-v2.mantle.xyz/intro/system-components/on-chain-system#addressmanager)
+
+AddressManager es un contrato heredado que se utilizaba en la versión antigua del sistema Mantle para gestionar un registro de nombres de cadenas a direcciones.

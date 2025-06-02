@@ -1,0 +1,119 @@
+---
+- title: Roles de la Red
+- description: Entendiendo el protocolo de red a través de sus participantes activos
+---
+
+<Warning>
+  Mantle v2 Tectonic ha sido lanzado, por favor, pase a la nueva [documentación](https://docs-v2.mantle.xyz/)!
+</Warning>
+
+## Definición de Roles de Red
+
+Actualmente hay cuatro roles para los nodos en la red Mantle, a saber **Sequencers**, **nodos de Esquema de Firma de Umbral (TSS)**, **Verificadores de Rollup/Nodos Réplica, y nodos de Disponibilidad de Datos (DA)**. Aquí hay una descripción simple de sus responsabilidades.
+
+### Sequencers
+
+* Recibir y registrar transacciones enviadas por los usuarios en tiempo real
+* Producir bloques en L2
+* Agrupar transacciones para generar lotes con raíces de estado de ejecución
+* Obtener bloques validados por el módulo TSS
+* Transmitir datos de bloques a través de la red (L1 y L2)
+
+<Info>
+  En las fases iniciales del lanzamiento, el equipo central de Mantle operará su propio Sequencer centralizado. Sin embargo, como parte de nuestra hoja de ruta, eventualmente descentralizaremos el Sequencer, creando otra oportunidad para que los nodos contribuyan a Mantle.
+</Info>
+
+### Nodos de Esquema de Firma de Umbral (TSS)
+
+* "Firmar" lotes de transacciones producidos por los Sequencers para ser enviados a L1
+* Transmitir lotes a través de la red L2 después de la verificación
+
+<Info>
+  Los nodos TSS verifican las raíces de estado generadas por los Sequencers para determinar su corrección. Las raíces de estado **DEBEN** ser firmadas por un nodo TSS antes de ser enviadas a Ethereum para ser registradas.
+</Info>
+
+<Info>
+  Durante las fases iniciales del lanzamiento, los nodos TSS son operados por un grupo de instituciones de renombre, pero eventualmente serán elegidos a través de la gobernanza de Mantle de manera permisionless.
+</Info>
+
+### Verificadores de Rollup / Nodos Réplica
+
+* Sincronizar datos de rollup desde el sequencer confiable de Mantle
+* Verificar las raíces de estado enviadas por los Sequencers en L2
+* Iniciar pruebas de fraude cuando se encuentran datos de estado inválidos
+* Servir datos de rollup a los usuarios
+
+<Info>
+  Las pruebas de fraude son parte de nuestra [hoja de ruta](/network/network/introduction/architecture-and-roadmap#roadmap) y la función se agregará eventualmente a través de una actualización de Mainnet.
+</Info>
+
+### Nodos DA
+
+* Optar por asumir la responsabilidad de almacenar una copia de los datos de transacción de Mantle para tenerlos listos para acceder cuando sea necesario
+* Hacer un compromiso firmando los datos de bloque que proporcionan utilizando el [esquema de firma BLS](https://en.wikipedia.org/wiki/BLS_digital_signature) garantizando su usabilidad. Estas firmas son verificadas por un contrato EigenDA en Ethereum
+
+<Info>
+  Aprenda más en la sección de [Disponibilidad de Datos](/es/network/network/introduction/concepts/data-availability).
+</Info>
+
+Mantle DA impulsado por la tecnología EigenDA consiste en un conjunto de interacciones soportadas entre cuatro componentes principales como se describe a continuación.
+
+<Frame caption="">
+  <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2F3701411312-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNHXgeqhgrznnRobzznxl%252Fuploads%252FAsnGr1cXLy9Og1JIVxE8%252Fupdated%2520da%2520interaction.jpg%3Falt%3Dmedia%26token%3D1718a0e4-4941-4255-a886-c8c5af2fdfef&width=768&dpr=4&quality=100&sign=4935a0e1&sv=2" />
+</Frame>
+
+#### Operadores
+
+Los proveedores de servicios de la red DA necesitan confirmar su compromiso a través de firmas digitales, que colocan activos apostados como garantía colateral de su participación. Un Operador lleva a cabo las siguientes tareas:
+
+* Ejecutar nodos que almacenan fragmentos de datos por un período de tiempo predefinido y servir estos fragmentos bajo petición
+
+#### Dispersores
+
+Son los usuarios del servicio de disponibilidad de datos de Mantle DA, pagando por sus garantías económicas de disponibilidad de datos. Este rol puede ser desempeñado por un [Sequencer](/es/network/network/for-validators/network-roles#sequencers) de rollup. Un Dispersor realiza las siguientes tareas:
+
+* Codifica sus datos en fragmentos, publica fondos para hacer que los datos estén disponibles por un tiempo fijo, y distribuye los fragmentos codificados a los operadores de Mantle DA
+* Agrega firmas de los operadores y publica una atestación en la blockchain, confirmando la disponibilidad de los datos de interés para el período de tiempo especificado
+
+#### Desafiantes
+
+Son partes interesadas que juegan un papel importante en el protocolo de Prueba de Custodia. Los Desafiantes realizan las siguientes tareas:
+
+* Monitorear ciertas operaciones verificables del protocolo (que en el caso optimista no se verifican ni resuelven en la cadena)
+* Forzar sin permiso que las operaciones problemáticas se resuelvan en la cadena, resultando en que la apuesta de un operador sea recortada
+
+<Info>
+  El protocolo de Prueba de Custodia está en etapa de desarrollo y se pondrá en línea con una futura actualización de Mainnet.
+</Info>
+
+#### `MantleLayer` y `MantleDA` Contratos Inteligentes
+
+La colección de contratos inteligentes relacionados con DA que se ejecutan en Ethereum se encargan de lo siguiente:
+
+* Asegúrese de que los datos solo se acepten como disponibles cuando un grupo de operadores con una cantidad suficiente de participación los haya firmado colectivamente
+* Implementar el protocolo de prueba de custodia y proporcionar mecanismos para que un desafiante revele datos en la cadena
+* Verificar la validez de los datos enviados por los Desafiantes contra un compromiso firmado, y aplicar recortes según lo dictado por el protocolo de prueba de custodia
+
+El proceso de almacenamiento de datos en Mantle DA es el siguiente:
+
+1. Encoding: Disperser encodes data chunks and generates KZG multireveal proofs which will allow Operators to verify the correctness of their chunk.
+2. Dispersal: Disperser sends data chunks to respective DA Operators
+3. Attestation: Operators verify their chunks against the global commitment. If the verification is successful, the Operator proceeds to store their chunk of data for the duration specified by the Disperser and sends back an attestation
+4. Aggregation: If enough signatures are received, the Disperser aggregates the signatures and publishes them to L1 Ethereum.
+
+## **¿Por qué ejecutar un nodo Verificador de Rollup?**
+
+Hay múltiples ventajas de ejecutar un nodo Verificador de Rollup.
+
+1. Otorga muchos de los beneficios de ejecutar un nodo de Ethereum, como la capacidad de simular transacciones L2 localmente**sin limitación de velocida&#x64;**(los RPC públicos pueden enfrentar tales limitaciones)**.**
+2. Permite a cualquiera verificar el trabajo realizado por los Secuenciadores al**volver a derivar las raíces de salida**y**compararlas**con las enviadas por el Secuenciador. En caso de discrepancia, los verificadores podrán realizar una comprobación de fallas y reclamar recompensas enviando pruebas de fraude en futuras versiones de Mainnet.
+
+<Info>
+  **dApp builders**son alentados a considerar el valor añadido de ejecutar un nodo Verificador de Rollup dado que los costos generales tienden a ser bajos.
+</Info>
+
+El diagrama a continuación ilustra cómo el Secuenciador y el Verificador de Rollup encajan juntos. Tenga en cuenta que las acciones en rojo son realizadas por un**Sequencer**, mientras que las acciones en azul son realizadas por un**Rollup Verifier**:
+
+<Frame caption="">
+  <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2Flh4.googleusercontent.com%2FJV9Q7wwNHVZFhB2Cer5FX2dzZT_v6WtgcKvyLrXFLdp_QhuNYausSwCekBXGm-kNoT6KJrs1o9a3TaMMsKuntHLQwdBhrTVIVAeUBjJc5-KvyzFfeDh_oAADVbj_Ez4j4YvIrFSS3Av79OSpICMBB-Taj9evRc63PSlGamcJJhwAY9nChVSxJCD5Nc-fVA&width=768&dpr=4&quality=100&sign=d7da2555&sv=2" />
+</Frame>

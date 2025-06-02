@@ -1,115 +1,17 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
+  "$schema": "https://mintlify.com/docs.json",
   "name": "Mantle Network",
   "colors": {
     "primary": "#4DDE98",
     "light": "#4DDE98",
     "dark": "#4DDE98"
   },
-
-  "fonts": {
-    "family": "GT Walsheim",
-    "source": "https://mintlify-assets.b-cdn.net/fonts/GT-Walsheim-Medium.woff2",
-    "format": "woff2"
-  },
-
-  "favicon": "/favicon.svg",
-  "navigation": {
-    "dropdowns": [
-      {
-        "dropdown": "Mantle v2",
-        "icon": "gear",
-        "groups": [
-          {
-            "group": "INTRODUCTION",
-            "pages": [
-              "network",
-              {
-                "group": "Updated Notices",
-                "pages": [
-                  "network/introduction/updated-notices/eigenda-migration-for-mantle-sepolia",
-                  "network/introduction/updated-notices/mantle-network-mainnet-v2-tectonic-upgrade-guide"
-                ]
-              },
-              "network/introduction/whats-new-in-mantle-v2-everest"
-            ]
-          },
-          {
-            "group": "SYSTEM INFORMATION",
-            "pages": [
-              "network/system-information/architecture",
-              "network/system-information/transaction-lifecycle",
-              {
-                "group": "On-Chain System",
-                "pages": [
-                  "network/system-information/on-chain-system/contract-introduction",
-                  "network/system-information/on-chain-system/key-l1-contract-address"
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "dropdown": "Mantle v1",
-        "icon": "gear",
-        "groups": [
-          {
-            "group": "INTRODUCTION",
-            "pages": [
-              "network/network",
-              {
-                "group": "Key Concepts",
-                "pages": [
-                  "network/network/introduction/concepts/optimistic-rollups",
-                  "network/network/introduction/concepts/modular-chains",
-                  "network/network/introduction/concepts/data-availability"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "FOR VALIDATORS",
-            "pages": [
-              "network/network/for-validators/network-roles",
-              {
-                "group": "Deploy a Node",
-                "pages": [
-                  "network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node"
-                ]
-              },
-              {
-                "group": "Network Updates",
-                "pages": [
-                  "network/network/for-validators/network-updates/testnet-v0.4.3",
-                  "network/network/for-validators/network-updates/testnet-v0.4.0"
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Community",
-          "href": "https://discord.com/invite/0xMantle",
-          "icon": "discord"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://www.mantle.xyz/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
-  },
   "logo": {
     "light": "/logo/light.jfif",
     "dark": "/logo/dark.svg"
   },
+  "favicon": "/favicon.svg",
   "navbar": {
     "links": [
       {
@@ -122,11 +24,190 @@
       }
     ]
   },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Community",
+          "icon": "discord",
+          "href": "https://discord.com/invite/0xMantle"
+        },
+        {
+          "anchor": "Blog",
+          "icon": "newspaper",
+          "href": "https://www.mantle.xyz/blog"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "language": "en",
+        "dropdowns": [
+          {
+            "dropdown": "Mantle v2",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "INTRODUCTION",
+                "pages": [
+                  "network",
+                  {
+                    "group": "Updated Notices",
+                    "pages": [
+                      "network/introduction/updated-notices/eigenda-migration-for-mantle-sepolia",
+                      "network/introduction/updated-notices/mantle-network-mainnet-v2-tectonic-upgrade-guide"
+                    ]
+                  },
+                  "network/introduction/whats-new-in-mantle-v2-everest"
+                ]
+              },
+              {
+                "group": "SYSTEM INFORMATION",
+                "pages": [
+                  "network/system-information/architecture",
+                  "network/system-information/transaction-lifecycle",
+                  {
+                    "group": "On-Chain System",
+                    "pages": [
+                      "network/system-information/on-chain-system/contract-introduction",
+                      "network/system-information/on-chain-system/key-l1-contract-address"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Mantle v1",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "INTRODUCTION",
+                "pages": [
+                  "network/network",
+                  {
+                    "group": "Key Concepts",
+                    "pages": [
+                      "network/network/introduction/concepts/optimistic-rollups",
+                      "network/network/introduction/concepts/modular-chains",
+                      "network/network/introduction/concepts/data-availability"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "FOR VALIDATORS",
+                "pages": [
+                  "network/network/for-validators/network-roles",
+                  {
+                    "group": "Deploy a Node",
+                    "pages": [
+                      "network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node"
+                    ]
+                  },
+                  {
+                    "group": "Network Updates",
+                    "pages": [
+                      "network/network/for-validators/network-updates/testnet-v0.4.3",
+                      "network/network/for-validators/network-updates/testnet-v0.4.0"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "dropdowns": [
+          {
+            "dropdown": "Mantle v2",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "INTRODUCCIÓN",
+                "pages": [
+                  "es/network",
+                  {
+                    "group": "Avisos Actualizados",
+                    "pages": [
+                      "es/network/introduction/updated-notices/eigenda-migration-for-mantle-sepolia",
+                      "es/network/introduction/updated-notices/mantle-network-mainnet-v2-tectonic-upgrade-guide"
+                    ]
+                  },
+                  "es/network/introduction/whats-new-in-mantle-v2-everest"
+                ]
+              },
+              {
+                "group": "INFORMACIÓN DEL SISTEMA",
+                "pages": [
+                  "es/network/system-information/architecture",
+                  "es/network/system-information/transaction-lifecycle",
+                  {
+                    "group": "Sistema En-Cadena",
+                    "pages": [
+                      "es/network/system-information/on-chain-system/contract-introduction",
+                      "es/network/system-information/on-chain-system/key-l1-contract-address"
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "dropdown": "Mantle v1",
+            "icon": "gear",
+            "groups": [
+              {
+                "group": "INTRODUCCIÓN",
+                "pages": [
+                  "es/network/network",
+                  {
+                    "group": "Conceptos Clave",
+                    "pages": [
+                      "es/network/network/introduction/concepts/optimistic-rollups",
+                      "es/network/network/introduction/concepts/modular-chains",
+                      "es/network/network/introduction/concepts/data-availability"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "PARA VALIDADORES",
+                "pages": [
+                  "es/network/network/for-validators/network-roles",
+                  {
+                    "group": "Desplegar un Nodo",
+                    "pages": [
+                      "es/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node"
+                    ]
+                  },
+                  {
+                    "group": "Actualizaciones de la Red",
+                    "pages": [
+                      "es/network/network/for-validators/network-updates/testnet-v0.4.3",
+                      "es/network/network/for-validators/network-updates/testnet-v0.4.0"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "language": "es"
+      }
+    ]
+  },
   "footer": {
     "socials": {
       "x": "https://x.com/Mantle_Official",
       "discord": "https://discord.com/invite/0xMantle",
       "telegram": "https://t.me/mantlenetwork"
     }
+  },
+  "fonts": {
+    "family": "GT Walsheim",
+    "source": "https://mintlify-assets.b-cdn.net/fonts/GT-Walsheim-Medium.woff2",
+    "format": "woff2"
   }
 }

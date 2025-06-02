@@ -1,0 +1,142 @@
+---
+- title: Desplegando un Nodo Verificador/Réplica de Rollup
+- description: Despliegue un nodo verificador y sincronice datos de rollup como
+    parte de la red Mantle
+---
+
+<Warning>
+  Mantle v2 Tectonic ha sido lanzado, por favor pase a la nueva [documentación](https://docs-v2.mantle.xyz/)!
+</Warning>
+
+Para construir una aplicación en la red Mantle, necesitará acceso a un nodo Mantle. Hay múltiples [Proveedores de RPC de Nodos](/network/network/for-devs/resources-and-tooling/node-rpc-providers) públicos entre los que puede elegir, o puede desplegar el suyo propio dependiendo de los requisitos de sus casos de uso específicos.
+
+## Ejecutando Su Propio Nodo
+
+<Warning>
+  Si ejecuta un nodo, por favor esté atento a la última actualización en nuestra página de [Lanzamiento de GitHub](https://github.com/mantlenetworkio/mantle/releases)
+</Warning>
+
+#### **Requisitos de Hardware**
+
+Los nodos necesitan almacenar el historial de transacciones de Mantle y ejecutar `l2geth`.
+
+Especificaciones recomendadas:
+
+* **CPU** - mín. 4 núcleos, 8ª Gen. o superior
+* **RAM** - mín. 16 GB
+* **Almacenamiento** - mín. 100 GB de espacio libre en disco (HDD funciona por ahora, SSD es mejor)
+* **Ancho de banda** - 10mb/s+ de descarga
+
+#### Uso Aproximado del Disco
+
+Uso a partir del 21-09-2022:
+
+* Nodo de archivo: \~800gb
+* Nodo completo: \~60gb
+
+#### Snapshot
+
+Recomendamos que inicie el nodo con el último [snapshot](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle), para que no tenga que esperar mucho tiempo para sincronizar los datos.
+
+### Despliegue
+
+<Tabs>
+  <Tab title="Ejecutando el nodo con Docker">
+    El método recomendado para crear una réplica es usar [Docker](https://www.docker.com/) y las [imágenes de Docker que proporcionamos](https://hub.docker.com/u/mantlenetworkio). Incluyen todas las configuraciones. Usamos estas imágenes para nuestros propios sistemas, y como tales, estarán más probadas que cualquier otra configuración.
+
+    #### Configuración del Nodo
+
+    Puede encontrar instrucciones para construir y operar su nodo en la testnet y mainnet de Mantle siguiendo los enlaces a continuación:
+
+    * [**Nodo de testnet**](https://github.com/mantlenetworkio/networks/blob/main/run-node.md)
+    * [**Nodo de mainnet**](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md)
+  </Tab>
+
+  <Tab title="Ejecutando el nodo desde el binario">
+    Para compilar un nodo Mantle localmente y participar en la red como Verificador, siga estos pasos:
+
+    #### 1. Instalar Go y el Compilador C
+
+    Asegúrese de que Go (versión 1.19) y un compilador C estén instalados en su sistema. Puede usar su gestor de paquetes preferido (por ejemplo, apt, yum, brew) para instalarlos.
+
+    #### 2. Clonar el Repositorio de Mantle
+
+    Clone el repositorio de GitHub de Mantle usando el siguiente comando:
+
+    ```php
+    git clone https://github.com/mantlenetworkio/mantle.git
+    ```
+
+    #### 3. Navegar al Directorio `l2geth`
+
+    Navegue al directorio `l2geth` dentro del repositorio de Mantle:
+
+    ```bash
+    cd mantle/l2geth
+    ```
+
+    #### 4. Compilar el Nodo Geth de Mantle
+
+    Elija una versión estable aquí y compile el nodo Geth de Mantle usando el Makefile con el siguiente comando:
+
+    ```go
+    git checkout v0.4.3-5
+    make geth
+    ```
+
+    #### 5. Configurar el entorno
+
+    ```bash
+    git clone https://github.com/mantlenetworkio/networks.git
+    cd networks
+    cd mainnet/envs
+    set -a
+    . ./geth.env
+    set +a 
+    mkdir ~/mantle_l2geth_data
+    cd ../..
+    export ETH1_HTTP=https://rpc.ankr.com/eth # change this
+    export SEQUENCER_CLIENT_HTTP=https://rpc.mantle.xyz
+    export ROLLUP_STATE_DUMP_PATH=https://mantlenetworkio.github.io/networks/mainnet/genesis.json
+    export ROLLUP_CLIENT_HTTP=https://dtl.mantle.xyz
+    export ROLLUP_BACKEND='l2'
+    export ETH1_CTC_DEPLOYMENT_HEIGHT=8
+    export RETRIES=60
+    export ROLLUP_VERIFIER_ENABLE='true'
+    export DATADIR=~/mantle_l2geth_data
+
+    cp ../mantle/l2geth/build/bin/geth .
+    export PATH=$PATH:$(pwd)
+    ```
+
+    <Info>
+      1. Necesita cambiar `ETH1_HTTP` a su propio rpc
+      2. Necesita cambiar `DATADIR` a donde quiera almacenar los datos
+      3. Si la velocidad de sincronización es lenta, intente cambiar su URL de DTL, puede consultar más detalles [aquí](/es/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node#network-dtl-url).
+    </Info>
+
+    #### 6. Iniciar como Verificador
+
+    Inicie el nodo como Verificador para unirse a la red Mantle:
+
+    ```sh
+    sh geth.sh
+    ```
+
+    Este comando lanza un nodo local configurado como Verificador para participar en el proceso de validación dentro de la red Mantle.
+  </Tab>
+</Tabs>
+
+## Apéndice
+
+### URL de DTL de la Red
+
+Puede cambiar la URL del servicio DTL basándose en la red a la que su nodo se va a conectar actualizando el valor `ROLLUP_CLIENT_HTTP` en el archivo `docker-compose.yml` para el método Docker y el `./mainnet/envs/geth.env` para el método binario.
+
+| Red     | Región | URL                                                              |
+| ------- | ------ | ---------------------------------------------------------------- |
+| Mainnet | APAC   | [https://dtl.mantle.xyz](https://dtl.mantle.xyz)                 |
+| Mainnet | APAC   | [https://dtl-ap.mantle.xyz/](https://dtl-ap.mantle.xyz/)         |
+| Mainnet | EU     | [https://dtl-eu.mantle.xyz/](https://dtl-eu.mantle.xyz/)         |
+| Mainnet | US     | [https://dtl-us.mantle.xyz](https://dtl-us.mantle.xyz)           |
+| Testnet | Todas  | [https://dtl.testnet.mantle.xyz](https://dtl.testnet.mantle.xyz) |

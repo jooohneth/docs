@@ -1,0 +1,64 @@
+---
+- title: Disponibilidad de Datos
+- description: Desbloqueando la disponibilidad de datos hiper-escalada en un
+    rollup de Capa 2
+---
+
+<Warning>
+  Mantle v2 Tectonic ha sido lanzado, ¡por favor, pasa a la nueva [documentation](https://docs-v2.mantle.xyz/)!
+</Warning>
+
+## ¿Qué es la Disponibilidad de Datos?
+
+Por "Disponibilidad de Datos" (DA) nos referimos a la capacidad de cualquier nodo en la red Mantle para acceder al historial de transacciones publicado por el Sequencer. El acceso a los datos de los bloques para todos los participantes de la red es un problema de escalabilidad importante que debe abordarse, especialmente en el caso de blockchains que operan en una arquitectura de rollup para eliminar la posibilidad de que los datos de los bloques sean retenidos, maliciosa o de otra manera. Así que el desafío de mantener una red L2 *trustless* se reduce a garantizar que los datos de las transacciones permanezcan disponibles.
+
+<Info>
+  Resulta que garantizar la disponibilidad de datos es un desafío por derecho propio. Para entender cómo se maneja esto, puedes leer más sobre el problema de la disponibilidad de datos y la codificación de borrado [here](https://github.com/ethereum/research/wiki/A-note-on-data-availability-and-erasure-coding).
+</Info>
+
+## Minimización de la Confianza
+
+Uno de los pilares fundamentales del diseño de blockchain es la *trustlessness*. Cuando decimos "sin confianza", queremos decir que un usuario en una blockchain debería poder realizar sus tareas *sin depositar confianza innecesaria* en terceros.
+
+Esto explica por qué las blockchains utilizan criptografía. En lugar de confiar en acuerdos blandos y contratos sociales con otros participantes de la red (es decir, confianza), las blockchains utilizan reglas duras y código para hacer cumplir el comportamiento esperado. Lo que esto significa en la práctica es que las blockchains están diseñadas para que cualquier usuario pueda verificar si un participante de la red ha seguido las reglas.
+
+En una red como Ethereum, esto significa una cierta dependencia de los **full nodes.** Los nodos completos almacenarán públicamente todo el historial de datos de la blockchain para que todos los demás participantes de la red puedan verificar que la transición de estado de la cadena fue correcta.
+
+En el caso de Mantle, las transacciones se envían y ejecutan en la cadena L2. Esto significa que los nodos de Mantle necesitan acceso a los datos de transacciones L2 para verificar la transición de estado. Esta verificación se habilita haciendo que el Sequencer **publish** los datos completos de la transacción y la evidencia criptográfica de la transición de estado (una Prueba de Merkle) en Ethereum.
+
+La fiabilidad de la red de confianza de Ethereum se deriva de su amplia red de validadores que ejecutan un sólido algoritmo de consenso, una adopción que garantiza la seguridad, combinada con el valor del token \$ETH relativamente bien distribuido.
+
+## EigenLayer
+
+[**EigenLayer**](https://www.eigenlayer.com/)**,** un protocolo de re-staking, aprovecha la red de confianza existente de Ethereum para permitir que **cualquier** L2 basado en rollup garantice la disponibilidad de datos a su capa de ejecución, manteniendo el mismo nivel de seguridad que la red principal de Ethereum. Esto se logra a través de un mecanismo de **re-staking**, donde los validadores de L1 pueden optar por proporcionar servicios de disponibilidad de datos estando sujetos a condiciones de rendimiento adicionales utilizando su \$ETH stakeado como garantía.
+
+<Info>
+  Piensa en ello como una plataforma middleware de Ethereum.
+</Info>
+
+Así como los rollups optimistas utilizan incentivos económicos para mantener la integridad del sistema, este mecanismo también pone incentivos en su lugar para que los validadores de Ethereum proporcionen sus servicios para oportunidades de rendimiento adicionales. Lee más sobre EigenLayer [here](https://ethresear.ch/t/an-eigenlayer-centric-roadmap-or-cancel-sharding/14141#what-is-eigenlayer-1).
+
+## Mantle DA - Impulsado por la Tecnología EigenDA
+
+1. [EigenLayer](https://www.eigenlayer.xyz/) es un protocolo construido sobre Ethereum que introduce el restaking, una nueva primitiva en seguridad criptoeconómica. EigenDA (Data Availability), construido por EigenLabs, es una aplicación central en EigenLayer, que hemos seleccionado para el módulo de disponibilidad de datos de Mantle Network.
+2. La versión actual de MantleDA está impulsada por la tecnología EigenDA y licenciada por EigenLabs. El equipo de Mantle ha estado trabajando con el apoyo del equipo de EigenLayer en esta solución simplificada hasta que la solución canónica esté lista para el lanzamiento de la red principal.
+3. Para MantleDA, los datos de rollup están disponibles aquí: [State Roots on L1](https://etherscan.io/address/0x89E9D387555AF0cDE22cb98833Bae40d640AD7fa/advanced#internaltx), [Rollup Tx Data on L1](https://etherscan.io/address/0x291dc3819b863e19b0a9b9809F8025d2EB4aaE93), y [DA Rollup Tx on L2](https://explorer.mantle.xyz/eigenda-batches?batch_index=1196\&page_number=1\&page_size=50\&pages_limit=25).
+4. Planeamos migrar a EigenDA después del lanzamiento de EigenDA en la red principal.
+
+Ten en cuenta que: **Mantle DA**, permite a los nodos con permisos proporcionar servicios de disponibilidad de datos a la red Mantle y requiere staking de \$MNT.
+
+<Info>
+  Consulta la sección sobre [DA Nodes](/es/network/network/for-validators/network-roles#da-nodes) para saber más sobre cómo los diferentes actores participantes que forman parte del **Mantle DA** función del módulo.
+</Info>
+
+## Características de Mantle DA
+
+* Permite **desacoplar** la **capa de disponibilidad de datos** de la **capa de consenso**
+* Emplea un **canal unicast** para **intercambio de datos** entre los participantes de la red para ofrecer ganancias de eficiencia tanto en términos de transmisión como de almacenamiento de datos
+* Mantener una **tasa de borrado** asegura que los fragmentos de datos de bloque de fuentes L2 y L1 puedan ser utilizados por los actores verificadores para reconstruir datos de bloque completos
+
+Este enfoque proporcionará el **alto rendimiento** y **bajo costo de gas** necesarios para las aplicaciones de próxima generación en juegos blockchain, redes sociales descentralizadas y más.
+
+<Info>
+  **Mantle Explorer** muestra los [detalles del lote de transacciones](https://explorer.mantle.xyz/eigenda-batches) para los datos de rollup que se han almacenado en la capa DA, al igual que lo hace para las transacciones que tienen lugar en L2.
+</Info>

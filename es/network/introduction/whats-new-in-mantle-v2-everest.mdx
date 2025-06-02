@@ -1,0 +1,26 @@
+---
+- title: Novedades en Mantle V2 Everest
+- icon: fire
+---
+
+Después de más de un año de operación estable de Mantle Tectonic, presentamos con orgullo la**Actualización Everest**—un salto significativo para la red Mantle. Esta actualización no solo fortalece nuestra infraestructura existente, sino que también nos prepara completamente para la próxima**Actualización Pectra de Ethereum**, asegurando una compatibilidad perfecta con la red Mantle y estableciendo una base sólida para el desarrollo futuro. Como uno de los aspectos destacados principales de la Actualización Everest, el lanzamiento oficial de **EigenDA** introducirá una solución revolucionaria de disponibilidad de datos a la red, mejorando significativamente la eficiencia de la gestión de datos y la seguridad.
+
+## Mejoras en Mantle v2 Everest en comparación con Mantle v2 Tectonic
+
+### Integración de EigenDA
+
+Mantle ha mantenido una colaboración profunda con EigenDA. Antes del lanzamiento de la red principal de EigenDA, Mantle utilizaba Mantle DA (una capa DA de terceros impulsada por EigenDA) como su capa DA. Por lo tanto, cuando EigenDA se puso en marcha, completamos inmediatamente la migración en la red de pruebas y, después de las pruebas en el entorno de producción, finalmente migramos en la red principal de Mantle. Para obtener información detallada sobre EigenDA, consulte [here](/network/system-information/off-chain-system/eigenda).
+
+### Adaptación de L2 para la Actualización Pectra de Ethereum
+
+Ethereum está a punto de recibir la muy esperada actualización Pectra. Como L2 de Ethereum, Mantle comenzó inmediatamente el trabajo de adaptación para los cambios introducidos por la actualización Pectra, incluyendo el nuevo `RequestsHash` campo en los encabezados de bloque de EIP-7685, y el nuevo `SetCodeTx` tipo de transacción introducido en EIP-7702.
+
+### Introducción de Nuevas Características
+
+Desde la construcción sobre OP Stack Bedrock, Mantle se ha comprometido a mejorar la funcionalidad de op-geth a través del desarrollo de extensibilidad. En esta actualización, se introdujo el soporte para el nuevo contrato precompilado RIP-7212, junto con la adición de la interfaz `eth_getBlockReceipts` jsonRPC.
+
+### Descontinuación de la Característica MetaTX
+
+MetaTX, desarrollado independientemente por Mantle, proporcionaba funcionalidad de patrocinio de tarifas de gas, con el objetivo de minimizar las barreras para los usuarios que ingresan al ecosistema Mantle. Con la introducción de EIP-7702 en la actualización Pectra de Ethereum, Mantle proporcionará la misma funcionalidad de patrocinio de tarifas de gas basada en ella, por lo tanto, MetaTX ya no será compatible.[](https://docs-v2.mantle.xyz/intro/whats-new-in-mantle-v2#enhancements-in-mantle-v2-tectonic-compared-to-mantle-v1)
+
+[](https://docs-v2.mantle.xyz/intro/whats-new-in-mantle-v2#distinctions-between-mantle-v2-tectonic-and-op-stack-bedrock)
