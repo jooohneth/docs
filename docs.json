@@ -16,7 +16,7 @@
     "options": ["copy", "view", "chatgpt", "claude"]
   },
 
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.ico",
   "navbar": {
     "links": [
       {
@@ -33,9 +33,19 @@
     "global": {
       "anchors": [
         {
+          "anchor": "Cookathon",
+          "icon": "hat-chef",
+          "href": "https://cookathon.dev"
+        },
+        {
+          "anchor": "Faucet",
+          "icon": "faucet",
+          "href": "https://mnt-faucet.xyz"
+        },
+        {
           "anchor": "Community",
-          "icon": "discord",
-          "href": "https://discord.com/invite/0xMantle"
+          "icon": "telegram",
+          "href": "https://t.me/mantledevs"
         },
         {
           "anchor": "Blog",
@@ -55,6 +65,7 @@
               {
                 "group": "INTRODUCTION",
                 "pages": [
+                  "index",
                   "network",
                   {
                     "group": "Updated Notices",
