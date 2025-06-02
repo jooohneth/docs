@@ -11,11 +11,6 @@
     "light": "/logo/light.jfif",
     "dark": "/logo/dark.svg"
   },
-
-  "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
-  },
-
   "favicon": "/favicon.ico",
   "navbar": {
     "links": [
@@ -135,6 +130,7 @@
         ]
       },
       {
+        "language": "es",
         "dropdowns": [
           {
             "dropdown": "Mantle v2",
@@ -143,6 +139,7 @@
               {
                 "group": "INTRODUCCIÓN",
                 "pages": [
+                  "es/index",
                   "es/network",
                   {
                     "group": "Avisos Actualizados",
@@ -160,7 +157,7 @@
                   "es/network/system-information/architecture",
                   "es/network/system-information/transaction-lifecycle",
                   {
-                    "group": "Sistema En-Cadena",
+                    "group": "Sistema En Cadena",
                     "pages": [
                       "es/network/system-information/on-chain-system/contract-introduction",
                       "es/network/system-information/on-chain-system/key-l1-contract-address"
@@ -209,8 +206,7 @@
               }
             ]
           }
-        ],
-        "language": "es"
+        ]
       }
     ]
   },
@@ -225,5 +221,13 @@
     "family": "GT Walsheim",
     "source": "https://mintlify-assets.b-cdn.net/fonts/GT-Walsheim-Medium.woff2",
     "format": "woff2"
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   }
 }
