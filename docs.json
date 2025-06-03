@@ -139,7 +139,6 @@
               {
                 "group": "INTRODUCCIÓN",
                 "pages": [
-                  "es/index",
                   "es/network",
                   {
                     "group": "Avisos Actualizados",
@@ -218,7 +217,6 @@
               {
                 "group": "ВВЕДЕНИЕ",
                 "pages": [
-                  "ru/index",
                   "ru/network",
                   {
                     "group": "Обновленные уведомления",
@@ -302,11 +300,6 @@
     "format": "woff2"
   },
   "contextual": {
-    "options": [
-      "copy",
-      "view",
-      "chatgpt",
-      "claude"
-    ]
+    "options": ["copy", "view", "chatgpt", "claude"]
   }
 }
