@@ -5,30 +5,30 @@
 ---
 
 <Warning>
-  Mantle v2 Tectonic ha sido lanzado, por favor pasa a la nueva[documentación](https://docs-v2.mantle.xyz/)!
+  Mantle v2 Tectonic ha sido lanzado, por favor pasa a la nueva [documentation](https://docs-v2.mantle.xyz/)!
 </Warning>
 
 ## Sistemas existentes
 
-Los Optimistic Rollups (ORs) tradicionales dependen de Ethereum para la disponibilidad de datos, la liquidación final y como capa de ejecución para las pruebas de fraude.
+Los Optimistic Rollups (ORs) tradicionales dependen de Ethereum para la disponibilidad de datos, liquidación final y como capa de ejecución para pruebas de fraude.
 
 Para tener una idea más clara de por qué construimos la red Mantle con una arquitectura modular, hablemos sobre las operaciones estándar de un OR tradicional.
 
-Un OR típico puede considerarse como una blockchain que procesa transacciones L2 en una capa de ejecución separada, pero que en última instancia depende de Ethereum para la liquidación final. Para mantener el nivel de seguridad de Ethereum, un OR también debe usar Ethereum para la disponibilidad de datos y como capa de ejecución para las pruebas de fraude. Este diseño mejora la escalabilidad de Ethereum, pero también introduce varias desventajas:
+Un OR típico puede considerarse como una blockchain que procesa transacciones L2 en una capa de ejecución separada, pero que en última instancia depende de Ethereum para la liquidación final. Para mantener el nivel de seguridad de Ethereum, un OR también debe usar Ethereum para la disponibilidad de datos y como capa de ejecución para pruebas de fraude. Este diseño mejora la escalabilidad de Ethereum, pero también introduce varias desventajas:
 
 1. Los usuarios de L2 están expuestos a tarifas costosas porque el OR publica datos de transacciones en Ethereum
-2. El uso de Ethereum como capa de disponibilidad de datos limita el rendimiento para los nodos L2
+2. Usar Ethereum como capa de disponibilidad de datos limita el rendimiento para los nodos L2
 3. Los ORs tradicionales deben permitir un largo período de desafío (típicamente 7 días) antes de que se logre la finalidad y los usuarios puedan retirar sus fondos de la cadena L2
 
 Idealmente, una solución de escalado L2 debería ofrecer los beneficios de un OR sin las desventajas de la arquitectura actual.
 
 ## Rollups Modulares
 
-En una**Blockchain Modular**, las funciones principales de la operación de la blockchain (ejecución, consenso, liquidación, disponibilidad de datos) se realizan en**capas especializadas**. Al aplicar este principio a un rollup, podemos optimizar la solución ya que cada capa ahora está realizando una tarea especializada. Esto conduce a costos más bajos y un mejor rendimiento general.
+En una **Blockchain Modular**, las funciones principales de la operación de la blockchain (ejecución, consenso, liquidación, disponibilidad de datos) se realizan en **capas especializadas**. Al aplicar este principio a un rollup, podemos optimizar la solución ya que cada capa ahora está realizando una tarea especializada. Esto conduce a costos más bajos y un mejor rendimiento general.
 
-Muchas blockchains populares como Ethereum, Binance Smart Chain, Solana, etc. manejan procesos como ejecución, consenso, liquidación y disponibilidad de datos todos a nivel de nodo/red (por lo tanto, a veces se les llama*blockchains Monolíticas*). Las blockchains modulares esencialmente dividen estas funciones en capas separadas que pueden ser ejecutadas por actores de la red en diferentes niveles. Esto se traduce en costos de gas más bajos y un mejor rendimiento general.
+Muchas blockchains populares como Ethereum, Binance Smart Chain, Solana, etc. manejan procesos como ejecución, consenso, liquidación y disponibilidad de datos todos a nivel de nodo/red (por lo tanto, a veces se les llama *blockchains Monolíticas*). Las blockchains modulares esencialmente dividen estas funciones en capas separadas que pueden ser ejecutadas por actores de la red en diferentes niveles. Esto se traduce en costos de gas más bajos y un mejor rendimiento general.
 
-Un sistema como este también es una solución potencial al popular[trilema de la blockchain](https://learn.bybit.com/deep-dive/blockchain-trilemma/)de Escalabilidad, Seguridad y Descentralización. Así es cómo.
+Un sistema como este también es una solución potencial al popular [trilema de la blockchain](https://learn.bybit.com/deep-dive/blockchain-trilemma/) de Escalabilidad, Seguridad y Descentralización. Así es cómo.
 
 1. La separación de recursos resulta en una mayor eficiencia de la red ya que cada capa se especializa en una tarea particular.
 2. Todos los usuarios operan al mismo nivel de seguridad mejorada, a diferencia de solo los validadores (nodos completos) en L1.

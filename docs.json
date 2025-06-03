@@ -139,6 +139,7 @@
               {
                 "group": "INTRODUCCIÓN",
                 "pages": [
+                  "es/index",
                   "es/network",
                   {
                     "group": "Avisos Actualizados",
@@ -156,7 +157,7 @@
                   "es/network/system-information/architecture",
                   "es/network/system-information/transaction-lifecycle",
                   {
-                    "group": "Sistema En Cadena",
+                    "group": "Sistema En-Cadena",
                     "pages": [
                       "es/network/system-information/on-chain-system/contract-introduction",
                       "es/network/system-information/on-chain-system/key-l1-contract-address"
@@ -217,6 +218,7 @@
               {
                 "group": "ВВЕДЕНИЕ",
                 "pages": [
+                  "ru/index",
                   "ru/network",
                   {
                     "group": "Обновленные уведомления",
@@ -267,7 +269,7 @@
                 "pages": [
                   "ru/network/network/for-validators/network-roles",
                   {
-                    "group": "Развертывание узла",
+                    "group": "Развернуть узел",
                     "pages": [
                       "ru/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node"
                     ]
@@ -300,6 +302,11 @@
     "format": "woff2"
   },
   "contextual": {
-    "options": ["copy", "view", "chatgpt", "claude"]
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
   }
 }

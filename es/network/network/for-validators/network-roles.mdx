@@ -4,10 +4,10 @@
 ---
 
 <Warning>
-  Mantle v2 Tectonic ha sido lanzado, por favor, pase a la nueva [documentación](https://docs-v2.mantle.xyz/)!
+  Mantle v2 Tectonic ha sido lanzado, por favor pase a la nueva [documentación](https://docs-v2.mantle.xyz/)!
 </Warning>
 
-## Definición de Roles de Red
+## Definiendo los Roles de la Red
 
 Actualmente hay cuatro roles para los nodos en la red Mantle, a saber **Sequencers**, **nodos de Esquema de Firma de Umbral (TSS)**, **Verificadores de Rollup/Nodos Réplica, y nodos de Disponibilidad de Datos (DA)**. Aquí hay una descripción simple de sus responsabilidades.
 
@@ -38,7 +38,7 @@ Actualmente hay cuatro roles para los nodos en la red Mantle, a saber **Sequence
 
 ### Verificadores de Rollup / Nodos Réplica
 
-* Sincronizar datos de rollup del sequencer confiable de Mantle
+* Sincronizar datos de rollup desde el sequencer confiable de Mantle
 * Verificar las raíces de estado enviadas por los Sequencers en L2
 * Iniciar pruebas de fraude cuando se encuentran datos de estado inválidos
 * Servir datos de rollup a los usuarios
@@ -50,13 +50,13 @@ Actualmente hay cuatro roles para los nodos en la red Mantle, a saber **Sequence
 ### Nodos DA
 
 * Optar por asumir la responsabilidad de almacenar una copia de los datos de transacción de Mantle para tenerlos listos para acceder cuando sea necesario
-* Hacer un compromiso firmando los datos de bloque que proporcionan utilizando el [esquema de firma BLS](https://en.wikipedia.org/wiki/BLS_digital_signature) garantizando su usabilidad. Estas firmas son verificadas por un contrato EigenDA en Ethereum
+* Hacer un compromiso firmando los datos del bloque que proporcionan utilizando el [esquema de firma BLS](https://en.wikipedia.org/wiki/BLS_digital_signature) garantizando su usabilidad. Estas firmas son verificadas por un contrato EigenDA en Ethereum
 
 <Info>
   Aprenda más en la sección de [Disponibilidad de Datos](/es/network/network/introduction/concepts/data-availability).
 </Info>
 
-Mantle DA impulsado por la tecnología EigenDA consiste en un conjunto de interacciones soportadas entre cuatro componentes principales como se describe a continuación.
+El DA de Mantle impulsado por la tecnología EigenDA consiste en un conjunto de interacciones soportadas entre cuatro componentes principales como se describe a continuación.
 
 <Frame caption="">
   <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2F3701411312-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FNHXgeqhgrznnRobzznxl%252Fuploads%252FAsnGr1cXLy9Og1JIVxE8%252Fupdated%2520da%2520interaction.jpg%3Falt%3Dmedia%26token%3D1718a0e4-4941-4255-a886-c8c5af2fdfef&width=768&dpr=4&quality=100&sign=4935a0e1&sv=2" />
@@ -80,7 +80,7 @@ Son los usuarios del servicio de disponibilidad de datos de Mantle DA, pagando p
 Son partes interesadas que juegan un papel importante en el protocolo de Prueba de Custodia. Los Desafiantes realizan las siguientes tareas:
 
 * Monitorear ciertas operaciones verificables del protocolo (que en el caso optimista no se verifican ni resuelven en la cadena)
-* Forzar sin permiso que las operaciones problemáticas se resuelvan en la cadena, resultando en que la apuesta de un operador sea recortada
+* Forzar sin permiso la resolución en la cadena de operaciones problemáticas, resultando en la pérdida de la apuesta de un operador
 
 <Info>
   El protocolo de Prueba de Custodia está en etapa de desarrollo y se pondrá en línea con una futura actualización de Mainnet.
@@ -92,7 +92,7 @@ La colección de contratos inteligentes relacionados con DA que se ejecutan en E
 
 * Asegurar que los datos solo se acepten como disponibles cuando un grupo de operadores con una cantidad suficiente de stake los haya firmado colectivamente
 * Implementar el protocolo de prueba de custodia y proporcionar mecanismos para que un desafiante revele datos en la cadena
-* Verificar la validez de los datos enviados por los Desafiantes contra un compromiso firmado, y aplicar recortes según lo dictado por el protocolo de prueba de custodia
+* Verificar la validez de los datos enviados por los Desafiantes contra un compromiso firmado, y aplicar el recorte según lo dictado por el protocolo de prueba de custodia
 
 El proceso de almacenamiento de datos en Mantle DA es el siguiente:
 
@@ -112,7 +112,7 @@ Hay múltiples ventajas de ejecutar un nodo Verificador de Rollup.
   **dApp builders**son alentados a considerar el valor añadido de ejecutar un nodo Verificador de Rollup dado que los costos generales tienden a ser bajos.
 </Info>
 
-El diagrama a continuación ilustra cómo el Secuenciador y el Verificador de Rollup encajan juntos. Tenga en cuenta que las acciones en rojo son realizadas por un**Sequencer**, mientras que las acciones en azul son realizadas por un**Rollup Verifier**:
+El diagrama a continuación ilustra cómo el Secuenciador y el Verificador de Rollup encajan juntos. Tenga en cuenta que las acciones en rojo son realizadas por un**Secuenciador**, mientras que las acciones en azul son realizadas por un**Verificador de Rollup**:
 
 <Frame caption="">
   <img src="https://docs.mantle.xyz/~gitbook/image?url=https%3A%2F%2Flh4.googleusercontent.com%2FJV9Q7wwNHVZFhB2Cer5FX2dzZT_v6WtgcKvyLrXFLdp_QhuNYausSwCekBXGm-kNoT6KJrs1o9a3TaMMsKuntHLQwdBhrTVIVAeUBjJc5-KvyzFfeDh_oAADVbj_Ez4j4YvIrFSS3Av79OSpICMBB-Taj9evRc63PSlGamcJJhwAY9nChVSxJCD5Nc-fVA&width=768&dpr=4&quality=100&sign=d7da2555&sv=2" />
