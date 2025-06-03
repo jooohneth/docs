@@ -1,6 +1,6 @@
 ---
-- title: Развертывание узла Верификатора/Реплики Rollup
-- description: Разверните узел верификатора и синхронизируйте данные rollup как
+- title: Развертывание узла Rollup Verifier/Replica
+- description: Разверните узел верификатора и синхронизируйте данные роллапа как
     часть сети Mantle
 ---
 
@@ -24,7 +24,7 @@
 
 * **CPU** - мин. 4 ядра, 8-го поколения или выше
 * **RAM** - мин. 16 ГБ
-* **Хранилище** - мин. 100 ГБ свободного дискового пространства (HDD подойдет на данный момент, SSD лучше)
+* **Хранилище** - мин. 100 ГБ свободного места на диске (HDD подойдет на данный момент, SSD лучше)
 * **Пропускная способность** - 10 Мбит/с+ скорость загрузки
 
 #### Приблизительное использование диска
@@ -36,7 +36,7 @@
 
 #### Снапшот
 
-Мы рекомендуем запускать узел с последним [снапшотом](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle), чтобы вам не пришлось долго ждать синхронизации данных.
+Мы рекомендуем запускать узел с последним [snapshot](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md#download-latest-snapshot-from-mantle), чтобы вам не пришлось долго ждать синхронизации данных.
 
 ### Развертывание
 
@@ -48,8 +48,8 @@
 
     Вы можете найти инструкции по сборке и эксплуатации вашего узла в тестовой сети и основной сети Mantle, перейдя по ссылкам ниже:
 
-    * [**Узел тестовой сети**](https://github.com/mantlenetworkio/networks/blob/main/run-node.md)
-    * [**Узел основной сети**](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md)
+    * [**Testnet node**](https://github.com/mantlenetworkio/networks/blob/main/run-node.md)
+    * [**Mainnet node**](https://github.com/mantlenetworkio/networks/blob/main/run-node-mainnet.md)
   </Tab>
 
   <Tab title="Запуск узла из бинарного файла">
@@ -112,7 +112,7 @@
     <Info>
       1. Вам нужно изменить `ETH1_HTTP` на ваш собственный rpc
       2. Вам нужно изменить `DATADIR` на место, где вы хотите хранить данные
-      3. Если скорость синхронизации низкая, попробуйте изменить URL DTL, подробнее можно узнать [здесь](/ru/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node#network-dtl-url).
+      3. Если скорость синхронизации низкая, попробуйте изменить ваш DTL URL, подробнее можно узнать [здесь](/ru/network/network/for-validators/deploy-a-node/deploying-a-rollup-verifier-replica-node#network-dtl-url).
     </Info>
 
     #### 6. Запустите как Верификатор
@@ -123,20 +123,20 @@
     sh geth.sh
     ```
 
-    Эта команда запускает локальный узел, настроенный как Верификатор, для участия в процессе валидации в сети Mantle.
+    Эта команда запускает локальный узел, настроенный как Верификатор для участия в процессе валидации в сети Mantle.
   </Tab>
 </Tabs>
 
 ## Приложение
 
-### URL DTL сети
+### URL сетевого DTL
 
 Вы можете изменить URL сервиса DTL в зависимости от сети, к которой будет подключаться ваш узел, обновив значение `ROLLUP_CLIENT_HTTP` в файле `docker-compose.yml` для Docker-способа и `./mainnet/envs/geth.env` для бинарного способа.
 
-| Сеть          | Регион | URL                                                              |
-| ------------- | ------ | ---------------------------------------------------------------- |
-| Основная сеть | APAC   | [https://dtl.mantle.xyz](https://dtl.mantle.xyz)                 |
-| Основная сеть | APAC   | [https://dtl-ap.mantle.xyz/](https://dtl-ap.mantle.xyz/)         |
-| Основная сеть | EU     | [https://dtl-eu.mantle.xyz/](https://dtl-eu.mantle.xyz/)         |
-| Основная сеть | US     | [https://dtl-us.mantle.xyz](https://dtl-us.mantle.xyz)           |
-| Тестовая сеть | Все    | [https://dtl.testnet.mantle.xyz](https://dtl.testnet.mantle.xyz) |
+| Сеть    | Регион | URL                                                              |
+| ------- | ------ | ---------------------------------------------------------------- |
+| Mainnet | APAC   | [https://dtl.mantle.xyz](https://dtl.mantle.xyz)                 |
+| Mainnet | APAC   | [https://dtl-ap.mantle.xyz/](https://dtl-ap.mantle.xyz/)         |
+| Mainnet | EU     | [https://dtl-eu.mantle.xyz/](https://dtl-eu.mantle.xyz/)         |
+| Mainnet | US     | [https://dtl-us.mantle.xyz](https://dtl-us.mantle.xyz)           |
+| Testnet | All    | [https://dtl.testnet.mantle.xyz](https://dtl.testnet.mantle.xyz) |
